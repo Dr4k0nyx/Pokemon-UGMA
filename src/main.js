@@ -1,6 +1,9 @@
 import k from "./kaboomContext.js";
 import world from "./scenes/world.js";
-import classroom from "./scenes/classroom.js";
+import leftDownClassroom from "./scenes/leftDownClassroom.js";
+import rightDownClassroom from "./scenes/rightDownClassroom.js";
+import leftUpClassroom from "./scenes/leftUpClassroom.js";
+import rightUpClassroom from "./scenes/rightUpClassroom.js";
 
 k.loadSprite("assets", "./assets/tiles.png", {
     sliceX: 10,
@@ -32,14 +35,17 @@ k.loadSprite("player1", "./assets/newCharacter.png", {
     },
 });
 
-k.loadSprite("class", "./assets/classroomTiles.png", {
-  sliceX: 10,
-  sliceY: 10,
+k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
+  sliceX: 7,
+  sliceY: 8,
 });
 
 const scenes = {
     world,
-    classroom,
+    leftDownClassroom,
+    rightDownClassroom,
+    leftUpClassroom,
+    rightUpClassroom,
 };
 
 for (const sceneName in scenes) {

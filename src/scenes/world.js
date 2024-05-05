@@ -2,6 +2,7 @@ import {
     generatePlayerComponents,
     setPlayerControls,
  } from "../entities/player.js";
+import { gameState } from "../state/stateManagers.js";
 import {
     colorizeBackground, 
     drawBoundries, 
@@ -10,19 +11,17 @@ import {
 } from "../utils.js";
 
 export default async function world(k) {
+    const previousScene = gameState.getPreviousScene();
     colorizeBackground(k, 58, 58, 80);
-    const mapData = await fetchMapData("./assets/maps/map.json");
-
+    const mapData = await fetchMapData("./assets/maps/PisoUno.json");
     const map = k.add([k.pos(0,0)]);
 
     const entities = {
         player: null,
-        slimes: [],
     };
 
     const layers = mapData.layers;
     for (const layer of layers) {
-
         if (layer.name === "Boundries") {
             drawBoundries(k, map, layer);
             continue;
@@ -30,7 +29,17 @@ export default async function world(k) {
 
         if (layer.name === "SpawnPoints") {
             for (const object of layer.objects) {
-                if (object.name === "player") {
+                if (object.name === "leftHallwaysPlayer" && (previousScene === "leftDownClassroom" || previousScene === "leftUpClassroom")) {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
+                    continue;
+                }
+
+                if (object.name === "rightHallwaysPlayer" && (previousScene === "rightDownClassroom" || previousScene === "rightUpClassroom")) {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
+                    continue;
+                }
+
+                if (object.name === "player" && !previousScene) {
                     entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),
                     );
                     continue;
@@ -43,7 +52,10 @@ export default async function world(k) {
     }
 
     setPlayerControls(k, entities.player);
-    entities.player.onCollide("door-entrance", () => k.go("classroom"));
+    entities.player.onCollide("leftDownClassroom - entrance", () => k.go("leftDownClassroom"));
+    entities.player.onCollide("rightDownClassroom - entrance", () => k.go("rightDownClassroom"));
+    entities.player.onCollide("leftUpClassroom - entrance", () => k.go("leftUpClassroom"));
+    entities.player.onCollide("rightUpClassroom - entrance", () => k.go("rightUpClassroom"));
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());
