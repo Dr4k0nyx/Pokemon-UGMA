@@ -132,7 +132,7 @@ export default function setBattle(k) {
         if (playerMon.fainted || enemyMon.fainted) return;
 
         if (phase === 'player-selection') {
-            content.text = '> Tackle';
+            content.text = '> Tacleada!';
             phase = 'player-turn';
             return;
         }
@@ -158,7 +158,7 @@ export default function setBattle(k) {
             if (damageDealt > 150) {
                 content.text = "It's a critical hit!";
             } else {
-                content.text = 'MARIPOSA used tackle.';
+                content.text = 'MARIPOSA used Tacleada!.';
             }
 
             reduceHealth(enemyMonHealthBar, damageDealt);
@@ -199,8 +199,8 @@ export default function setBattle(k) {
                 content.text = 'MARIPOSA won the battle!';
             }, 1000);
             setTimeout(() => {
-                k.faintedMons.push(k.enemyName);
-                k.go('world', k);
+                // k.faintedMons.push(k.enemyName);
+                k.go('world');
             }, 2000);
         }
 
@@ -212,8 +212,8 @@ export default function setBattle(k) {
                 content.text = 'You rush to get MARIPOSA healed!';
             }, 1000);
             setTimeout(() => {
-                k.playerPos = vec2(500, 700);
-                k.go('world', k);
+                // k.playerPos = vec2(500, 700);
+                k.go('world');
             }, 2000);
         }
     });
