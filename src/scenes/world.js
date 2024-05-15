@@ -61,7 +61,10 @@ export default async function world(k) {
     entities.player.onCollide("rightDownClassroom - entrance", () => k.go("rightDownClassroom"));
     entities.player.onCollide("leftUpClassroom - entrance", () => k.go("leftUpClassroom"));
     entities.player.onCollide("rightUpClassroom - entrance", () => k.go("rightUpClassroom"));
-    entities.player.onCollide("groundFloor - entrance", () => k.go("groundFloor"));
+    entities.player.onCollide("groundFloor - entrance", () => {
+        gameState.setPreviousScene("world");
+        k.go("groundFloor");
+    });
     entities.player.onCollide("pokemon", () => k.go("setBattle"));
     
     k.camScale(2);

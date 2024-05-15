@@ -35,7 +35,7 @@ export default async function groundFloor(k) {
                     continue;
                 }
 
-                if (object.name === "entranceFloorPlayer" && !previousScene) {
+                if (object.name === "entranceFloorPlayer" && previousScene === "world") {
                     entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),);
                     continue;
                 }
