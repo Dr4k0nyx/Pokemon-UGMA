@@ -45,9 +45,9 @@ export default function setBattle(k) {
         k.outline(4),
         k.pos(1000, 400)
     ]);
-
+    let vida = 100;
     playerMonHealthBox.add([
-        k.text('MARIPOSA 100%', { size: 32 }),
+        k.text(`MARIPOSA ${vida}%`, { size: 32 }),
         k.color(10, 10, 10),
         k.pos(10, 10)
     ]);
@@ -113,7 +113,6 @@ export default function setBattle(k) {
                 healthBar.width = val;
             }
         );
-        // enemyMonHealthBar.text('MARIPOSA is ready');
     }
 
     function makeMonFlash(mon) {
@@ -129,7 +128,7 @@ export default function setBattle(k) {
             }
         );
     }
-
+    
     function makeMonPunchPlayer(mon) {
 
         k.tween(
@@ -226,7 +225,7 @@ export default function setBattle(k) {
 
     }
 
-    const ataques  = ['Tacleada','Pingaso','Golpe Sombra','Sexo'];
+    const ataques  = ['Tacleada','Zarpada','Golpe Sombra','Ala de hierro'];
     let selectAtaque;
     let phase = 'player-selection';
     k.onCharInput( (char) => {
@@ -270,11 +269,14 @@ export default function setBattle(k) {
             } else {
                 content.text = 'MARIPOSA uso '+ ataques[selectAtaque-1]+'!.';
             }
+            if (char === '1' || char === '3') {
+                makeMonPunchPlayer(playerMon);
+            }else{
+                ataqueElementalPlayer(playerMon);
+            }
 
             reduceHealth(enemyMonHealthBar, damageDealt);
             makeMonFlash(enemyMon);
-            //makeMonPunchPlayer(playerMon);
-            ataqueElementalPlayer(playerMon);
 
             phase = 'enemy-turn';
         }
