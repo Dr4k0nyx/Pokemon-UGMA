@@ -45,9 +45,9 @@ export default function setBattle(k) {
         k.outline(4),
         k.pos(1000, 400)
     ]);
-
+    let vida = 100;
     playerMonHealthBox.add([
-        k.text('MARIPOSA', { size: 32 }),
+        k.text(`MARIPOSA ${vida}%`, { size: 32 }),
         k.color(10, 10, 10),
         k.pos(10, 10)
     ]);
@@ -109,7 +109,9 @@ export default function setBattle(k) {
             healthBar.width,
             healthBar.width - damageDealt,
             0.5,
-            (val) => healthBar.width = val
+            (val) => {
+                healthBar.width = val;
+            }
         );
     }
 
@@ -126,39 +128,151 @@ export default function setBattle(k) {
             }
         );
     }
+    
+    function makeMonPunchPlayer(mon) {
 
+        k.tween(
+            mon.pos.x,
+            400,
+            0.2,
+            (val) => {
+                mon.pos.x = val;
+                if (mon.pos.x === 400) {
+                    k.tween(
+                        mon.pos.x,
+                        300,
+                        0.2,
+                        (val) => mon.pos.x = val
+                    )
+                }
+            }
+        );
+
+    }
+
+    function ataqueElementalEnemigo(mon) {
+
+        k.tween(
+            mon.pos.x,
+            500,
+            0.3,
+            (val) => {
+                mon.pos.x = val; // Actualizar la posición del objeto en cada paso de la animación
+                k.tween(
+                    mon.pos.y,
+                    200,
+                    0.1,
+                    (val) => mon.pos.y = val
+                )
+            }
+
+        );
+    }
+
+    function ataqueElementalPlayer(mon) {
+        k.wait(0.4, () => {
+
+            k.tween(
+                mon.pos.x,
+                300,
+                0.4,
+                (val) => {
+                    mon.pos.x = val;
+                    k.tween(
+                        mon.pos.y,
+                        300,
+                        0.2,
+                        (val) => mon.pos.y = val
+                    )
+                }
+            )
+        });
+        k.tween(
+            mon.pos.x,
+            850,
+            0.3,
+            (val) => {
+                mon.pos.x = val; // Actualizar la posición del objeto en cada paso de la animación
+                k.tween(
+                    mon.pos.y,
+                    50,
+                    0.1,
+                    (val) => mon.pos.y = val
+                );
+            }
+        );
+
+    }
+
+
+    function makeMonPunchEnemy(mon) {
+        k.tween(
+            mon.pos.x,
+            900,
+            0.2,
+            (val) =>{
+                mon.pos.x = val
+                if (mon.pos.x === 900) {
+                    k.tween(
+                        mon.pos.x,
+                        1000,
+                        0.2,
+                        (val) => mon.pos.x = val
+                    )
+                }
+            }
+        );
+
+    }
+
+    const ataques  = ['Tacleada','Zarpada','Golpe Sombra','Ala de hierro'];
+    let selectAtaque;
     let phase = 'player-selection';
-    k.onKeyPress('space', () => {
+    k.onCharInput( (char) => {
+        console.log(/^\d+$/.test(char));
         if (playerMon.fainted || enemyMon.fainted) return;
 
         if (phase === 'player-selection') {
-            content.text = '> Tackle';
+            content.text = 'Presiona un numero para elegir el ataque! \n\n 1)' + ataques[0] +  '        2)' + ataques[1] +  ' \n 3)' + ataques[2] +  '      4)' + ataques[3];
+            selectAtaque = parseInt(char);
             phase = 'player-turn';
+            if(!(/^\d+$/.test(char) && parseInt(char)>0 && parseInt(char)<5)) {
+                console.log('No ha elegido un numero');
+                phase = 'player-selection';
+            }
             return;
         }
 
         if (phase === 'enemy-turn') {
-            content.text = 'GAVILAN' + ' attacks!';
-            const damageDealt = Math.random() * 230;
-
+            const ataqueEnemigo = Math.floor(Math.random() * 4);
+            content.text = 'GAVILAN' + ' uso ' + ataques[ataqueEnemigo]+'!';
+            const damageDealt = Math.random() * 100;
+            console.log('enemigo: ' + damageDealt);
             if (damageDealt > 150) {
                 content.text = "It's a critical hit!";
             }
 
             reduceHealth(playerMonHealthBar, damageDealt);
             makeMonFlash(playerMon);
+            makeMonPunchEnemy(enemyMon);
 
             phase = 'player-selection';
             return;
         }
 
         if (phase === 'player-turn') {
-            const damageDealt = Math.random() * 230;
+            const damageDealt = Math.random() * 100;
+            console.log('jugador: ' + damageDealt);
 
             if (damageDealt > 150) {
                 content.text = "It's a critical hit!";
             } else {
-                content.text = 'MARIPOSA used tackle.';
+                content.text = 'MARIPOSA uso '+ ataques[selectAtaque-1]+'!.';
+            }
+            if (char === '1' || char === '3') {
+                makeMonPunchPlayer(playerMon);
+            }else{
+                ataqueElementalPlayer(playerMon);
             }
 
             reduceHealth(enemyMonHealthBar, damageDealt);
@@ -167,6 +281,8 @@ export default function setBattle(k) {
             phase = 'enemy-turn';
         }
     });
+
+
 
     function colorizeHealthBar(healthBar) {
         if (healthBar.width < 200) {
@@ -199,8 +315,8 @@ export default function setBattle(k) {
                 content.text = 'MARIPOSA won the battle!';
             }, 1000);
             setTimeout(() => {
-                k.faintedMons.push(k.enemyName);
-                k.go('world', k);
+                // k.faintedMons.push(k.enemyName);
+                k.go('world');
             }, 2000);
         }
 
@@ -212,8 +328,8 @@ export default function setBattle(k) {
                 content.text = 'You rush to get MARIPOSA healed!';
             }, 1000);
             setTimeout(() => {
-                k.playerPos = vec2(500, 700);
-                k.go('world', k);
+                // k.playerPos = vec2(500, 700);
+                k.go('world');
             }, 2000);
         }
     });
