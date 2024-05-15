@@ -366,6 +366,17 @@
                  "width":18,
                  "x":1901.5,
                  "y":259
+                }, 
+                {
+                 "height":19,
+                 "id":29,
+                 "name":"university - entrance",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":114.333333333333,
+                 "x":534.666666666667,
+                 "y":309
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -432,7 +443,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":29,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

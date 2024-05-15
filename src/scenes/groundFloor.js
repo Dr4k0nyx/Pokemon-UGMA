@@ -9,11 +9,12 @@ import {
     drawTiles, 
     fetchMapData 
 } from "../utils.js";
+import universityCourtyard from "./universityCourtyard.js";
 
-export default async function world(k) {
+export default async function groundFloor(k) {
     const previousScene = gameState.getPreviousScene();
     colorizeBackground(k, 58, 58, 80);
-    const mapData = await fetchMapData("./assets/maps/PisoUno.json");
+    const mapData = await fetchMapData("./assets/maps/PlantaBaja.json");
     const map = k.add([k.pos(0,0)]);
 
     const entities = {
@@ -29,24 +30,13 @@ export default async function world(k) {
 
         if (layer.name === "SpawnPoints") {
             for (const object of layer.objects) {
-                if (object.name === "entranceFloorPlayer" && previousScene === "groundFloor") {
+                if (object.name === "universityDoorPlayer" && previousScene === "universityCourtyard") {
                     entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
                     continue;
                 }
 
-                if (object.name === "leftHallwaysPlayer" && (previousScene === "leftDownClassroom" || previousScene === "leftUpClassroom")) {
-                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
-                    continue;
-                }
-
-                if (object.name === "rightHallwaysPlayer" && (previousScene === "rightDownClassroom" || previousScene === "rightUpClassroom")) {
-                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
-                    continue;
-                }
-
-                if (object.name === "player" && !previousScene) {
-                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),
-                    );
+                if (object.name === "entranceFloorPlayer" && !previousScene) {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),);
                     continue;
                 }
             }
@@ -57,11 +47,11 @@ export default async function world(k) {
     }
 
     setPlayerControls(k, entities.player);
-    entities.player.onCollide("leftDownClassroom - entrance", () => k.go("leftDownClassroom"));
-    entities.player.onCollide("rightDownClassroom - entrance", () => k.go("rightDownClassroom"));
-    entities.player.onCollide("leftUpClassroom - entrance", () => k.go("leftUpClassroom"));
-    entities.player.onCollide("rightUpClassroom - entrance", () => k.go("rightUpClassroom"));
-    entities.player.onCollide("groundFloor - entrance", () => k.go("groundFloor"));
+    entities.player.onCollide("university - exit", () => k.go("universityCourtyard"));
+    entities.player.onCollide("firstFloor - entrance", () => {
+        gameState.setPreviousScene("groundFloor");
+        k.go("world");
+      });
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());

@@ -5,10 +5,12 @@ import rightDownClassroom from "./scenes/rightDownClassroom.js";
 import leftUpClassroom from "./scenes/leftUpClassroom.js";
 import rightUpClassroom from "./scenes/rightUpClassroom.js";
 import setBattle from "./scenes/battle.js";
+import groundFloor from "./scenes/groundFloor.js";
+import universityCourtyard from "./scenes/universityCourtyard.js";
 
 k.loadSprite("assets", "./assets/tiles.png", {
     sliceX: 10,
-    sliceY: 5,
+    sliceY: 13,
 });
 
 k.loadSprite("player1", "./assets/newCharacter.png", {
@@ -41,6 +43,11 @@ k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
   sliceY: 8,
 });
 
+k.loadSprite("yard", "./assets/patio.png", {
+  sliceX: 8,
+  sliceY: 27,
+});
+
 k.loadSpriteAtlas("./assets/enemigos.png", {
   'cat-mon': { x: 0, y: 16, width: 32, height: 32 },
   'mushroom-mon': { x: 32, y: 49, width: 32, height: 32 },
@@ -57,7 +64,9 @@ const scenes = {
     rightDownClassroom,
     leftUpClassroom,
     rightUpClassroom,
-    setBattle
+    setBattle,
+    groundFloor,
+    universityCourtyard,
 };
 
 for (const sceneName in scenes) {
