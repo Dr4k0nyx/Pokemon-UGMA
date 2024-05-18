@@ -6,9 +6,9 @@ export default function setBattle(k) {
     ]);
 
     const enemyMon = k.add([
-        k.sprite('gavilan'),
+        k.sprite('flamethrower'),
         k.scale(1.5),
-        k.pos(1300, 100),
+        k.pos(1300, 0),
         k.opacity(1),
         {
             fainted: false
@@ -24,7 +24,7 @@ export default function setBattle(k) {
     );
 
     const playerMon = k.add([
-        k.sprite('mariposa'),
+        k.sprite('Flamethrower'),
         k.scale(1.5),
         k.pos(-100, 300),
         k.opacity(1),
@@ -47,7 +47,7 @@ export default function setBattle(k) {
     ]);
     let vida = 100;
     playerMonHealthBox.add([
-        k.text(`MARIPOSA ${vida}%`, { size: 32 }),
+        k.text(`MARIPOSA`, { size: 32 }),
         k.color(10, 10, 10),
         k.pos(10, 10)
     ]);

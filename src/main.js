@@ -7,6 +7,7 @@ import rightUpClassroom from "./scenes/rightUpClassroom.js";
 import setBattle from "./scenes/battle.js";
 import groundFloor from "./scenes/groundFloor.js";
 import universityCourtyard from "./scenes/universityCourtyard.js";
+import { loadAssets } from './assetLoader.js';
 
 k.loadSprite("assets", "./assets/tiles.png", {
     sliceX: 10,
@@ -48,15 +49,7 @@ k.loadSprite("yard", "./assets/patio.png", {
   sliceY: 27,
 });
 
-k.loadSpriteAtlas("./assets/enemigos.png", {
-  'cat-mon': { x: 0, y: 16, width: 32, height: 32 },
-  'mushroom-mon': { x: 32, y: 49, width: 32, height: 32 },
-});
-
-k.loadSprite("mariposa",'./assets/mariposa.png');
-k.loadSprite("gavilan", './assets/gavilan.png');
-
-k.loadSprite('battle-background', './assets/battleBackground.png');
+loadAssets();
 
 const scenes = {
     world,
@@ -73,4 +66,4 @@ for (const sceneName in scenes) {
     k.scene(sceneName, () => scenes[sceneName](k));
 }
 
-k.go('world')
+k.go('setBattle')
