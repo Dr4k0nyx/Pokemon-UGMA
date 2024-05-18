@@ -10,7 +10,7 @@ export function loadAssets() {
     k.loadSprite("Flamethrower", ruta+'006b.png');
     k.loadSprite("flamethrower", ruta+'006.png');
     k.loadSprite("Shadowmancer", ruta+'012b.png');
-    k.loadSprite("shadowmancer", ruta+'012b.png');
+    k.loadSprite("shadowmancer", ruta+'012.png');
     k.loadSprite("Frostfang", ruta+'016b.png');
     k.loadSprite("frostfang", ruta+'016.png');
     k.loadSprite("Lavaspitter", ruta+'018b.png');
@@ -36,7 +36,7 @@ export function loadAssets() {
     k.loadSprite("Boulderback", ruta+'077b.png');
     k.loadSprite("boulderback", ruta+'077.png');
     k.loadSprite("Spectral", ruta+'080b.png');
-    k.loadSprite("spectral", ruta+'080b.png');
+    k.loadSprite("spectral", ruta+'080.png');
     k.loadSprite("Cinderghoul", ruta+'093sb_1.png');
     k.loadSprite("cinderghoul", ruta+'093s_1.png');
     k.loadSprite("Glaciermaw", ruta+'095b.png');

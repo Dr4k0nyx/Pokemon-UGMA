@@ -63,7 +63,11 @@ const scenes = {
 };
 
 for (const sceneName in scenes) {
-    k.scene(sceneName, () => scenes[sceneName](k));
+    k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-k.go('setBattle')
+const info = [
+  [0,1,2,3],
+  [4,5,6,7]
+]
+k.go('setBattle',{info : info})
