@@ -66,8 +66,4 @@ for (const sceneName in scenes) {
     k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-const info = [
-  [0,1,2,3],
-  [4,5,6,7]
-]
-k.go('setBattle',{info : info})
+k.go('world')

@@ -7,14 +7,22 @@ export default function setBattle(k,data) {
     let monsJ = [];
     let monsE = [];
     info[0].forEach(j => {
-        monsJ.push(monsters[j]);
-        monsJ[j].fainted = false;
+        let monster = monsters[j];
+        monster.fainted = false;
+        monsJ.push(monster);
     });
     info[1].forEach(e => {
-        monsE.push(monsters[e]);
+        let monster = monsters[e];
+        monster.fainted = false;
+        monsE.push(monster);
     });
+    let pmon = monsJ[0];
+    let emon = monsE[0];
 
-    console.log(monsJ);
+    let pi = 0;
+    let pe = 0;
+
+    console.log(pmon.fainted);
     console.log(monsE);
 
 /*Anadiendo escenario*/ 
@@ -23,22 +31,9 @@ export default function setBattle(k,data) {
         k.scale(1.3),
         k.pos(0, 0)
     ]);
-
-    const PlayerMon = [
-        {
-            name:monsJ[0].name,
-            fainted:false
-        }
-    ];
-    const EnemyMon = [
-        {
-            name:(monsE[1].name).toLowerCase(),
-            fainted:false
-        }
-    ];
     
     let playerMon = k.add([
-        k.sprite(PlayerMon[0].name),
+        k.sprite(pmon.name),
         k.scale(1.7),
         k.pos(-100, 230),
         k.opacity(1)
@@ -51,22 +46,48 @@ export default function setBattle(k,data) {
         (val) => playerMon.pos.x = val
     );
 
-    function viene(mon) {
-        k.wait(0.3, () => {
+    function viene(name,flag) {
+        if (flag) {
+            nombreJugador.text = name;
+            playerMon = k.add([
+                k.sprite(name),
+                k.scale(1.7),
+                k.pos(-100, 230),
+                k.opacity(1)
+            ]);
+            
             k.tween(
-                mon.pos.y,
-                230,
+                playerMon.pos.x,
+                300,
                 0.3,
-                (val) => mon.pos.y = val
+                (val) => playerMon.pos.x = val
             );
-        });
-
-        k.tween(
-            mon.pos.y,
-            800,
-            0.5,
-            (val) => mon.pos.y = val
-        );
+            k.wait(2,()=>{
+                content.text = pmon.name + ' entro al campo de batalla!'
+            });
+        }else{
+            nombreEnemigo.text = name;
+            enemyMon = k.add([
+                k.sprite(name.toLowerCase()),
+                k.scale(1.5),
+                k.pos(1300, 0),
+                k.opacity(1),
+            ]);
+            enemyMon.flipX = true;
+        
+            k.tween(
+                enemyMon.pos.x,
+                1000,
+                0.3,
+                (val) => enemyMon.pos.x = val
+            );
+            setTimeout(() => {
+                content.text = emon.name + ' entro al campo de batalla!'
+            }, 2000);
+            // k.wait(2,()=>{
+            //     content.text = emon.name + ' entro al campo de batalla!'
+            // });
+        }
     }
     
     const playerMonHealthBox = k.add([
@@ -76,7 +97,7 @@ export default function setBattle(k,data) {
     ]);
 
     const nombreJugador = playerMonHealthBox.add([
-        k.text(monsJ[0].name, { size: 32 }),
+        k.text(pmon.name, { size: 32 }),
         k.color(10, 10, 10),
         k.pos(10, 10)
     ]);
@@ -87,7 +108,7 @@ export default function setBattle(k,data) {
         k.pos(15, 50)
     ]);
     
-    const playerMonHealthBar = playerMonHealthBox.add([
+    let playerMonHealthBar = playerMonHealthBox.add([
         k.rect(370, 10),
         k.color(0, 200, 0),
         k.pos(15, 50)
@@ -95,8 +116,8 @@ export default function setBattle(k,data) {
     
     k.tween(playerMonHealthBox.pos.x, 850, 0.3, (val) => playerMonHealthBox.pos.x = val);
     
-    const enemyMon = k.add([
-        k.sprite(EnemyMon[0].name),
+    let enemyMon = k.add([
+        k.sprite(emon.name.toLowerCase()),
         k.scale(1.5),
         k.pos(1300, 0),
         k.opacity(1),
@@ -117,7 +138,7 @@ export default function setBattle(k,data) {
     ]);
 
     const nombreEnemigo = enemyMonHealthBox.add([
-        k.text(EnemyMon[0].name, { size: 32 }),
+        k.text(emon.name, { size: 32 }),
         k.color(10, 10, 10),
         k.pos(10, 10)
     ]);
@@ -167,7 +188,7 @@ export default function setBattle(k,data) {
     ]);
 
     const content = box.add([
-        k.text('MARIPOSA is ready to battle!', { size: 42 }),
+        k.text( pmon.name + ' esta listo para la batalla!', { size: 42 }),
         k.color(10, 10, 10),
         k.pos(20, 20)
     ]);
@@ -293,15 +314,14 @@ export default function setBattle(k,data) {
 
     }
 
-    const ataques  = ['Tacleada','Zarpada','Golpe Sombra','Ala de hierro'];
     let selectAtaque;
     let phase = 'player-selection';
     k.onCharInput( (char) => {
         console.log(/^\d+$/.test(char));
-        if (PlayerMon[0].fainted || EnemyMon[0].fainted) return;
+        if (pmon.fainted || emon.fainted) return;
 
         if (phase === 'player-selection') {
-            content.text = 'Presiona un numero para elegir el ataque! \n\n 1)' + ataques[0] +  '        2)' + ataques[1] +  ' \n 3)' + ataques[2] +  '      4)' + ataques[3];
+            content.text = 'Presiona un numero para elegir el ataque! \n\n 1)' + pmon.attacks[0] +  '        2)' + pmon.attacks[1] +  ' \n 3)' + pmon.attacks[2] +  '      4)' + pmon.attacks[3];
             selectAtaque = parseInt(char);
             phase = 'player-turn';
             if(!(/^\d+$/.test(char) && parseInt(char)>0 && parseInt(char)<5)) {
@@ -311,18 +331,18 @@ export default function setBattle(k,data) {
             return;
         }
         if (char === 'a') {
-            // nombreEnemigo.text = 'de jamon y queso';
-            // enemyMonHealthBar = otraEntidad(enemyMonHealthBox);
-            viene(playerMon);
+            //playerMonHealthBar = otraEntidad(playerMonHealthBox); 
+            enemyMonHealthBar = otraEntidad(enemyMonHealthBox);
+
         }
 
         if (phase === 'enemy-turn') {
             const ataqueEnemigo = Math.floor(Math.random() * 4);
-            content.text = 'GAVILAN' + ' uso ' + ataques[ataqueEnemigo]+'!';
+            content.text = emon.name + ' uso ' + emon.attacks[ataqueEnemigo]+'!';
             const damageDealt = Math.random() * 100;
             console.log('enemigo: ' + damageDealt);
             if (damageDealt > 150) {
-                content.text = "It's a critical hit!";
+                content.text = "Ha dado un golpe critico!";
             }
 
             reduceHealth(playerMonHealthBar, damageDealt);
@@ -338,9 +358,9 @@ export default function setBattle(k,data) {
             console.log('jugador: ' + damageDealt);
 
             if (damageDealt > 150) {
-                content.text = "It's a critical hit!";
+                content.text = "Ha dado un golpe critico!";
             } else {
-                content.text = 'MARIPOSA uso '+ ataques[selectAtaque-1]+'!.';
+                content.text = pmon.name + ' uso '+ pmon.attacks[selectAtaque-1]+'!.';
             }
             if (char === '1' || char === '3') {
                 makeMonPunchPlayer(playerMon);
@@ -380,30 +400,45 @@ export default function setBattle(k,data) {
         colorizeHealthBar(playerMonHealthBar);
         colorizeHealthBar(enemyMonHealthBar);
 
-        if (enemyMonHealthBar.width < 0 && !EnemyMon[0].fainted) {
+        if (enemyMonHealthBar.width < 0 && !emon.fainted) {
             makeMonDrop(enemyMon);
-            content.text = 'GAVILAN' + ' fainted!';
-            EnemyMon[0].fainted = true;
-            setTimeout(() => {
-                content.text = 'MARIPOSA won the battle!';
-            }, 1000);
-            setTimeout(() => {
-                // k.faintedMons.push(k.enemyName);
-                k.go('world');
-            }, 2000);
+            content.text = emon.name + ' fainted!';
+            emon.fainted = true;
+            if (pe < monsE.length-1 && emon.fainted === true) {
+                pe++;
+                emon = monsE[pe];                
+                content.text = monsE[pe-1].name + ' No puede seguir mas!';
+                viene(emon.name,false);
+                enemyMonHealthBar = otraEntidad(enemyMonHealthBox); 
+            }else{
+                setTimeout(() => {
+                    content.text = emon.name + ' won the battle!';
+                }, 1000);
+                setTimeout(() => {
+
+                    k.go('world');
+                }, 2000);
+            }
         }
 
-        if (playerMonHealthBar.width < 0 && !PlayerMon[0].fainted) {
+        if (playerMonHealthBar.width < 0 && !pmon.fainted) {
             makeMonDrop(playerMon);
-            content.text = 'MARIPOSA fainted!';
-            PlayerMon[0].fainted = true;
-            setTimeout(() => {
-                content.text = 'You rush to get MARIPOSA healed!';
-            }, 1000);
-            setTimeout(() => {
-                // k.playerPos = vec2(500, 700);
-                k.go('world');
-            }, 2000);
+            pmon.fainted = true;
+            if (pi < monsJ.length-1 && pmon.fainted === true) {
+                pi++;
+                pmon = monsJ[pi];                
+                content.text = monsJ[pi-1].name + ' No puede seguir mas!';
+                viene(pmon.name,true);
+                playerMonHealthBar = otraEntidad(playerMonHealthBox); 
+            }else{
+                setTimeout(() => {
+                    content.text = 'Tu equipo ha pedido vida, vuelvelo a intentar!';
+                }, 1000);
+                setTimeout(() => {
+
+                    k.go('world');
+                }, 2000);
+            }
         }
     });
 }
