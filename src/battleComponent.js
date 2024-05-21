@@ -1,5 +1,4 @@
 
-
 const tipos = [
     {
         name:"Fuego",
