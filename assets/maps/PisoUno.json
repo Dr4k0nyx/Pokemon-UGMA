@@ -740,7 +740,7 @@
                 {
                  "height":27,
                  "id":70,
-                 "name":"leftDownClassroom - entrance",
+                 "name":"DownClassroom_4 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -751,7 +751,7 @@
                 {
                  "height":27,
                  "id":79,
-                 "name":"rightDownClassroom - entrance",
+                 "name":"DownClassroom_5 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -762,7 +762,7 @@
                 {
                  "height":27,
                  "id":87,
-                 "name":"rightUpClassroom - entrance",
+                 "name":"UpClassroom_5 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -773,7 +773,7 @@
                 {
                  "height":27,
                  "id":88,
-                 "name":"rightUpClassroom - entrance",
+                 "name":"UpClassroom_6 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -784,7 +784,7 @@
                 {
                  "height":27,
                  "id":89,
-                 "name":"rightUpClassroom - entrance",
+                 "name":"UpClassroom_7 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -795,7 +795,7 @@
                 {
                  "height":27,
                  "id":90,
-                 "name":"rightUpClassroom - entrance",
+                 "name":"UpClassroom_8 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -806,7 +806,7 @@
                 {
                  "height":27,
                  "id":82,
-                 "name":"rightDownClassroom - entrance",
+                 "name":"DownClassroom_8 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -817,7 +817,7 @@
                 {
                  "height":27,
                  "id":81,
-                 "name":"rightDownClassroom - entrance",
+                 "name":"DownClassroom_7 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -829,7 +829,7 @@
                 {
                  "height":27,
                  "id":80,
-                 "name":"rightDownClassroom - entrance",
+                 "name":"DownClassroom_6 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -840,7 +840,7 @@
                 {
                  "height":27,
                  "id":74,
-                 "name":"leftDownClassroom - entrance",
+                 "name":"DownClassroom_3 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -851,7 +851,7 @@
                 {
                  "height":27,
                  "id":75,
-                 "name":"leftDownClassroom - entrance",
+                 "name":"DownClassroom_2 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -862,7 +862,7 @@
                 {
                  "height":27,
                  "id":76,
-                 "name":"leftDownClassroom - entrance",
+                 "name":"DownClassroom_1 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -873,7 +873,7 @@
                 {
                  "height":27,
                  "id":83,
-                 "name":"leftUpClassroom - entrance",
+                 "name":"UpClassroom_1 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -884,7 +884,7 @@
                 {
                  "height":27,
                  "id":84,
-                 "name":"leftUpClassroom - entrance",
+                 "name":"UpClassroom_2 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -895,7 +895,7 @@
                 {
                  "height":27,
                  "id":85,
-                 "name":"leftUpClassroom - entrance",
+                 "name":"UpClassroom_3 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -906,7 +906,7 @@
                 {
                  "height":27,
                  "id":86,
-                 "name":"leftUpClassroom - entrance",
+                 "name":"UpClassroom_4 - entrance",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -944,8 +944,8 @@
                  "type":"",
                  "visible":true,
                  "width":12.7272727272727,
-                 "x":664,
-                 "y":384.545454545455
+                 "x":684,
+                 "y":426.545454545455
                 }, 
                 {
                  "height":76.3636363636364,
@@ -1005,30 +1005,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":77,
-                 "name":"leftHallwaysPlayer",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":384,
-                 "y":449.333333333333
-                }, 
-                {
-                 "height":0,
-                 "id":78,
-                 "name":"rightHallwaysPlayer",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":1632.66666666667,
-                 "y":446
-                }, 
-                {
-                 "height":0,
                  "id":91,
                  "name":"pokemon1",
                  "point":true,
@@ -1036,8 +1012,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":670,
-                 "y":391
+                 "x":691,
+                 "y":433.5
                 }, 
                 {
                  "height":0,
@@ -1074,6 +1050,198 @@
                  "width":0,
                  "x":1119,
                  "y":197
+                }, 
+                {
+                 "height":0,
+                 "id":103,
+                 "name":"UpClassroom_1 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":110.5,
+                 "y":375.5
+                }, 
+                {
+                 "height":0,
+                 "id":104,
+                 "name":"UpClassroom_2 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":302.5,
+                 "y":373.5
+                }, 
+                {
+                 "height":0,
+                 "id":105,
+                 "name":"UpClassroom_3 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":463,
+                 "y":374.5
+                }, 
+                {
+                 "height":0,
+                 "id":106,
+                 "name":"UpClassroom_4 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":622,
+                 "y":371.5
+                }, 
+                {
+                 "height":0,
+                 "id":107,
+                 "name":"UpClassroom_5 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1391,
+                 "y":373
+                }, 
+                {
+                 "height":0,
+                 "id":108,
+                 "name":"UpClassroom_6 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1550.5,
+                 "y":371.5
+                }, 
+                {
+                 "height":0,
+                 "id":109,
+                 "name":"UpClassroom_7 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1710.5,
+                 "y":371
+                }, 
+                {
+                 "height":0,
+                 "id":110,
+                 "name":"UpClassroom_8 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1902.5,
+                 "y":371
+                }, 
+                {
+                 "height":0,
+                 "id":113,
+                 "name":"DownClassroom_1 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":117,
+                 "y":558
+                }, 
+                {
+                 "height":0,
+                 "id":114,
+                 "name":"DownClassroom_2 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":309.5,
+                 "y":556
+                }, 
+                {
+                 "height":0,
+                 "id":115,
+                 "name":"DownClassroom_3 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":469.5,
+                 "y":556
+                }, 
+                {
+                 "height":0,
+                 "id":116,
+                 "name":"DownClassroom_4 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":598.5,
+                 "y":556.5
+                }, 
+                {
+                 "height":0,
+                 "id":117,
+                 "name":"DownClassroom_5 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1429,
+                 "y":554.5
+                }, 
+                {
+                 "height":0,
+                 "id":118,
+                 "name":"DownClassroom_6 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1557.5,
+                 "y":556.5
+                }, 
+                {
+                 "height":0,
+                 "id":119,
+                 "name":"DownClassroom_7 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1718,
+                 "y":556.5
+                }, 
+                {
+                 "height":0,
+                 "id":120,
+                 "name":"DownClassroom_8 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1910,
+                 "y":555
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1158,7 +1326,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":103,
+ "nextobjectid":122,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -1167,6 +1335,10 @@
         {
          "firstgid":1,
          "source":"tilesPisoUno.tsx"
+        }, 
+        {
+         "firstgid":131,
+         "source":"patio.tsx"
         }],
  "tilewidth":32,
  "type":"map",

@@ -44,7 +44,7 @@ export default async function universityCourtyard(k) {
     entities.player.onCollide("university - entrance", () => {
         gameState.setPreviousScene("universityCourtyard");
         k.go("groundFloor");
-      });
+    });
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());
