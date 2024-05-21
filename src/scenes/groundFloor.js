@@ -9,7 +9,6 @@ import {
     drawTiles, 
     fetchMapData 
 } from "../utils.js";
-import universityCourtyard from "./universityCourtyard.js";
 
 export default async function groundFloor(k) {
     const previousScene = gameState.getPreviousScene();
@@ -35,6 +34,26 @@ export default async function groundFloor(k) {
                     continue;
                 }
 
+                if (object.name === "UpClassroom_9 - Player" && previousScene === "UpClassroom_9") {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
+                    continue;
+                }
+
+                if (object.name === "UpClassroom_10 - Player" && previousScene === "UpClassroom_10") {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
+                    continue;
+                }
+
+                if (object.name === "UpClassroom_11 - Player" && previousScene === "UpClassroom_11") {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
+                    continue;
+                }
+
+                if (object.name === "UpClassroom_12 - Player" && previousScene === "UpClassroom_12") {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)));
+                    continue;
+                }
+
                 if (object.name === "entranceFloorPlayer" && previousScene === "world") {
                     entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),);
                     continue;
@@ -48,6 +67,10 @@ export default async function groundFloor(k) {
 
     setPlayerControls(k, entities.player);
     entities.player.onCollide("university - exit", () => k.go("universityCourtyard"));
+    entities.player.onCollide("UpClassroom_9 - entrance", () => k.go("upClassroom_9"));
+    entities.player.onCollide("UpClassroom_10 - entrance", () => k.go("upClassroom_10"));
+    entities.player.onCollide("UpClassroom_11 - entrance", () => k.go("upClassroom_11"));
+    entities.player.onCollide("UpClassroom_12 - entrance", () => k.go("upClassroom_12"));
     entities.player.onCollide("firstFloor - entrance", () => {
         gameState.setPreviousScene("groundFloor");
         k.go("world");

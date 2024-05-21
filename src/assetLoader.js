@@ -64,6 +64,47 @@ export function loadAssets() {
     k.loadSprite("Inferno",      ruta   +   '184sb.png'   );
     k.loadSprite("inferno",      ruta   +   '184s.png'    );
 
+    k.loadSprite("assets", "./assets/tiles.png", {
+        sliceX: 10,
+        sliceY: 13,
+    });
+    
+    k.loadSprite("player1", "./assets/newCharacter.png", {
+        sliceX: 4,
+        sliceY: 4,
+        anims: {
+            "player-idle-down": 0,
+            "player-down": {
+              from: 0,
+              to: 3,
+              loop: true,
+            },
+            "player-idle-side": 8,
+            "player-side": {
+              from: 8,
+              to: 11,
+              loop: true,
+            },
+            "player-idle-up": 12,
+            "player-up": {
+              from: 12,
+              to: 15,
+              loop: true,
+            },
+        },
+    });
+    
+    k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
+      sliceX: 7,
+      sliceY: 8,
+    });
+    
+    k.loadSprite("yard", "./assets/patio.png", {
+      sliceX: 8,
+      sliceY: 27,
+    });
+    
+
     ruta = './assets/Battle/animations/'
     /*Cargando sprites de ataques*/ 
     k.loadSprite("aire",         ruta   +   'aire.png'       );

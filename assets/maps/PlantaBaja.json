@@ -703,6 +703,50 @@
                  "y":269.5
                 }, 
                 {
+                 "height":26.5,
+                 "id":65,
+                 "name":"UpClassroom_9 - entrance",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":84.25,
+                 "x":1300.91666666667,
+                 "y":363.5
+                }, 
+                {
+                 "height":26.5,
+                 "id":67,
+                 "name":"UpClassroom_10 - entrance",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":84.25,
+                 "x":1463.58333333333,
+                 "y":362.833333333333
+                }, 
+                {
+                 "height":26.5,
+                 "id":68,
+                 "name":"UpClassroom_11 - entrance",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":84.25,
+                 "x":1621.58333333333,
+                 "y":362.166666666667
+                }, 
+                {
+                 "height":26.5,
+                 "id":69,
+                 "name":"UpClassroom_12 - entrance",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":84.25,
+                 "x":1812.25,
+                 "y":362.833333333333
+                }, 
+                {
                  "height":24.3333333333333,
                  "id":63,
                  "name":"university - exit",
@@ -747,6 +791,54 @@
                  "width":0,
                  "x":639,
                  "y":1178.33333333333
+                }, 
+                {
+                 "height":0,
+                 "id":70,
+                 "name":"UpClassroom_9 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1326,
+                 "y":444
+                }, 
+                {
+                 "height":0,
+                 "id":71,
+                 "name":"UpClassroom_10 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1486.66666666667,
+                 "y":442
+                }, 
+                {
+                 "height":0,
+                 "id":72,
+                 "name":"UpClassroom_11 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1647.33333333333,
+                 "y":444
+                }, 
+                {
+                 "height":0,
+                 "id":73,
+                 "name":"UpClassroom_12 - Player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1838.66666666667,
+                 "y":440.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -855,7 +947,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":65,
+ "nextobjectid":74,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
