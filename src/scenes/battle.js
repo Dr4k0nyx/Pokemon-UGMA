@@ -2,6 +2,16 @@ import { monsters } from '../battleComponent.js'
 
 export default function setBattle(k,data) {
 
+    
+
+    if (!('nivel' in localStorage)){
+        localStorage.setItem('nivel',1);
+    }
+
+    let nivel = localStorage.getItem('nivel');
+
+    console.log(nivel);
+
     /*Cargando Mons del jugador como el enemigo*/ 
     const { info } = data;
     let monsJ = [];
@@ -22,8 +32,7 @@ export default function setBattle(k,data) {
     let pi = 0;
     let pe = 0;
 
-    console.log(pmon.fainted);
-    console.log(monsE);
+    console.log('este es el nivel actual del Juagdor: ' + nivel);
 
 /*Anadiendo escenario*/ 
     k.add([
@@ -239,8 +248,25 @@ export default function setBattle(k,data) {
 
     }
 
-    function ataqueElementalEnemigo(mon) {
+    function ataqueEspecialEnemigo(mon) {
 
+        k.wait(0.4, () =>{
+            k.tween(
+                mon.pos.x,
+                1000,
+                0.4,
+                (val) => {
+                    mon.pos.x = val;
+                    k.tween(
+                        mon.pos.y,
+                        0,
+                        0.2,
+                        (val) => mon.pos.y = val
+                    )
+                }
+            )
+
+        });
         k.tween(
             mon.pos.x,
             500,
@@ -258,7 +284,75 @@ export default function setBattle(k,data) {
         );
     }
 
-    function ataqueElementalPlayer(mon) {
+    function ataqueElementalEnemy() {
+        const ataque = k.add([
+            k.sprite("aire"),
+            k.scale(1.5),
+            k.pos(1000, 0),
+            k.opacity(1),
+        ]);
+
+        k.tween(
+            ataque.pos.x,
+            450,
+            0.3,
+            (val) => {
+                ataque.pos.x = val; // Actualizar la posición del objeto en cada paso de la animación
+                k.tween(
+                    ataque.pos.y,
+                    200,
+                    0.1,
+                    (val) => {
+                        ataque.pos.y = val
+                        k.tween(
+                            ataque.opacity,
+                            0,
+                            0.6,
+                            (val) => ataque.opacity = val
+                        )
+                    }
+                )
+            }
+
+        );
+
+
+    }
+
+    function ataqueElementalPlayer() {
+        const ataque = k.add([
+            k.sprite("aire"),
+            k.scale(1.5),
+            k.pos(300, 300),
+            k.opacity(1),
+        ]);
+
+        k.tween(
+            ataque.pos.x,
+            850,
+            0.3,
+            (val) => {
+                ataque.pos.x = val; // Actualizar la posición del objeto en cada paso de la animación
+                k.tween(
+                    ataque.pos.y,
+                    50,
+                    0.1,
+                    (val) => {
+                        ataque.pos.y = val
+                        k.tween(
+                            ataque.opacity,
+                            0,
+                            0.6,
+                            (val) => ataque.opacity = val
+                        )
+
+                    }
+                );
+            }
+        );
+    }
+
+    function ataqueEspecialPlayer(mon) {
         k.wait(0.4, () => {
 
             k.tween(
@@ -313,10 +407,18 @@ export default function setBattle(k,data) {
         );
 
     }
-
+    let cancion = true;
     let selectAtaque;
     let phase = 'player-selection';
+    let sonido;
     k.onCharInput( (char) => {
+        if (cancion) {
+            sonido = k.play("battle",{
+                volume:0.5,
+                loop:true
+            });
+            cancion = false;
+        }
         console.log(/^\d+$/.test(char));
         if (pmon.fainted || emon.fainted) return;
 
@@ -338,34 +440,73 @@ export default function setBattle(k,data) {
 
         if (phase === 'enemy-turn') {
             const ataqueEnemigo = Math.floor(Math.random() * 4);
+            let damageDealt = 0;
+            switch (ataqueEnemigo) {
+                case 1:
+                    damageDealt = Math.floor(Math.random() * 11) + 10;
+                    makeMonPunchEnemy(enemyMon);
+                    k.play("sonido1");
+                break;
+                case 2:
+                    damageDealt = Math.floor(Math.random() * 11) + 15;
+                    ataqueElementalEnemy()
+                    k.play("sonido2");
+                break;
+                case 3:
+                    damageDealt = Math.floor(Math.random() * 11) + (10);
+                    ataqueEspecialEnemigo(enemyMon);
+                    k.play("sonido3");
+                break;
+                case 4:
+                    damageDealt = Math.floor(Math.random() * 11) + 15;
+                    makeMonPunchEnemy(enemyMon);
+                    k.play("sonido4");
+                break;
+            }
             content.text = emon.name + ' uso ' + emon.attacks[ataqueEnemigo]+'!';
-            const damageDealt = Math.random() * 100;
             console.log('enemigo: ' + damageDealt);
+            console.log(ataqueEnemigo);
             if (damageDealt > 150) {
                 content.text = "Ha dado un golpe critico!";
             }
 
             reduceHealth(playerMonHealthBar, damageDealt);
             makeMonFlash(playerMon);
-            makeMonPunchEnemy(enemyMon);
 
             phase = 'player-selection';
             return;
         }
 
         if (phase === 'player-turn') {
-            const damageDealt = Math.random() * 100;
+            let damageDealt = 0;
+            switch (char) {
+                case '1':
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*10;
+                    makeMonPunchPlayer(playerMon);
+                    k.play("sonido1");
+                break;
+                case '2':
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*15;
+                    ataqueElementalPlayer();
+                    k.play("sonido2");
+                break;
+                case '3':
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*10;
+                    ataqueEspecialPlayer(playerMon);
+                    k.play("sonido3");
+                break;
+                case '4':
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*15;
+                    makeMonPunchPlayer(playerMon);
+                    k.play("sonido4");
+                break;
+            }
             console.log('jugador: ' + damageDealt);
 
             if (damageDealt > 150) {
                 content.text = "Ha dado un golpe critico!";
             } else {
                 content.text = pmon.name + ' uso '+ pmon.attacks[selectAtaque-1]+'!.';
-            }
-            if (char === '1' || char === '3') {
-                makeMonPunchPlayer(playerMon);
-            }else{
-                ataqueElementalPlayer(playerMon);
             }
 
             reduceHealth(enemyMonHealthBar, damageDealt);
@@ -415,8 +556,11 @@ export default function setBattle(k,data) {
                     content.text = emon.name + ' won the battle!';
                 }, 1000);
                 setTimeout(() => {
-
                     k.go('world');
+                    nivel++;
+                    localStorage.setItem('nivel',nivel);
+                    console.log('este es el nivel ahora: '+nivel);
+                    sonido.paused = true;
                 }, 2000);
             }
         }
@@ -435,8 +579,10 @@ export default function setBattle(k,data) {
                     content.text = 'Tu equipo ha pedido vida, vuelvelo a intentar!';
                 }, 1000);
                 setTimeout(() => {
-
                     k.go('world');
+
+                    console.log('este es el nivel ahora: '+nivel);
+                    sonido.paused = true;
                 }, 2000);
             }
         }

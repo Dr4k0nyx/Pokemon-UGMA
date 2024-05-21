@@ -1,7 +1,7 @@
 import k from "./kaboomContext.js";
 export function loadAssets() {
 
-    const ruta      = './assets/Battle/Pokemons/';
+    let ruta      = './assets/Battle/Pokemons/';
     k.loadSprite('battle-background', './assets/Battle/battleBackground.png');
     k.loadSprite("mariposa",     ruta   +   'mariposa.png');
     k.loadSprite("gavilan",      ruta   +   'gavilan.png' );
@@ -104,4 +104,22 @@ export function loadAssets() {
       sliceY: 27,
     });
     
+
+    ruta = './assets/Battle/animations/'
+    /*Cargando sprites de ataques*/ 
+    k.loadSprite("aire",         ruta   +   'aire.png'       );
+    k.loadSprite("pentagrama",   ruta   +   'pentagrama.png' );
+    k.loadSprite("raices",       ruta   +   'raices.png'     );
+    k.loadSprite("arcoiris",     ruta   +   'arcoiris.png'   );
+    k.loadSprite("diamante",     ruta   +   'diamante.png'   );
+    k.loadSprite("veneno",       ruta   +   'veneno.png'     );
+    k.loadSprite("rayitos",      ruta   +   'rayitos.png'    );
+    k.loadSprite("piedra",       ruta   +   'piedra.png'     );
+
+    /*Tema de batalla */
+    k.loadSound("battle", "src/mp3/battle.mp3");
+    k.loadSound("sonido1", "src/mp3/sonido1.wav");
+    k.loadSound("sonido2", "src/mp3/sonido2.mp3");
+    k.loadSound("sonido3", "src/mp3/sonido3.mp3");
+    k.loadSound("sonido4", "src/mp3/sonido4.wav");
 }

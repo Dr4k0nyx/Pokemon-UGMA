@@ -148,6 +148,12 @@ export default async function world(k) {
         k.go("groundFloor");
     });
     entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[0,1,2,3],[4,5,6,7]]}));
+    entities.player.onCollide("leftDownClassroom - entrance", () => k.go("leftDownClassroom"));
+    entities.player.onCollide("rightDownClassroom - entrance", () => k.go("rightDownClassroom"));
+    entities.player.onCollide("leftUpClassroom - entrance", () => k.go("leftUpClassroom"));
+    entities.player.onCollide("rightUpClassroom - entrance", () => k.go("rightUpClassroom"));
+    entities.player.onCollide("groundFloor - entrance", () => k.go("groundFloor"));
+    entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[0],[4]]}));
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());
