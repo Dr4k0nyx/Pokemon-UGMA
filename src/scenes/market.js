@@ -1,19 +1,18 @@
 import {
   generatePlayerComponents,
   setPlayerControls,
-} from "../../entities/player.js";
-import { gameState } from "../../state/stateManagers.js";
+} from "../entities/player.js";
+import { gameState } from "../state/stateManagers.js";
 import {
   colorizeBackground,
   drawBoundries,
-  drawTilesClassroom,
+  drawTilesShop,
   fetchMapData,
-} from "../../utils.js";
+} from "../utils.js";
 
-export default async function downClassroom_8(k) {
+export default async function market(k) {
   colorizeBackground(k, 58, 58, 80);
-
-  const mapData = await fetchMapData("./assets/maps/salonAbajo8.json");
+  const mapData = await fetchMapData("./assets/maps/tienda.json");
   const map = k.add([k.pos(520, 200)]);
 
   const entities = {
@@ -29,25 +28,24 @@ export default async function downClassroom_8(k) {
 
     if (layer.name === "SpawnPoints") {
       for (const object of layer.objects) {
-        if (object.name === "player") {
+        if (object.name === "entranceMarketPlayer") {
           entities.player = map.add(
             generatePlayerComponents(k, k.vec2(object.x, object.y))
           );
           continue;
         }
       }
-
       continue;
     }
 
-    drawTilesClassroom(k, map, layer, mapData.tileheight, mapData.tileheight);
+    drawTilesShop(k, map, layer, mapData.tileheight, mapData.tileheight);
   }
 
   k.camScale(2);
   setPlayerControls(k, entities.player);
-  entities.player.onCollide("classroom - exit", () => {
-    gameState.setPreviousScene("DownClassroom_8");
-    k.go("firstFloor");
+  entities.player.onCollide("market - exit", () => {
+    gameState.setPreviousScene("market");
+    k.go("universityCourtyard");
   });
 
   

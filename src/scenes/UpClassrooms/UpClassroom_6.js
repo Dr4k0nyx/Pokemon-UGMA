@@ -47,7 +47,7 @@ export default async function upClassroom_6(k) {
   setPlayerControls(k, entities.player);
   entities.player.onCollide("classroom - exit", () => {
     gameState.setPreviousScene("UpClassroom_6");
-    k.go("world");
+    k.go("firstFloor");
   });
 
   
