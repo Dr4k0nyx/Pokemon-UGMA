@@ -2,13 +2,15 @@ import { monsters } from '../battleComponent.js'
 
 export default function setBattle(k,data) {
 
-    
-
     if (!('nivel' in localStorage)){
         localStorage.setItem('nivel',1);
     }
+    if (!('exp' in localStorage)){
+        localStorage.setItem('exp',0);
+    }
 
     let nivel = localStorage.getItem('nivel');
+    let exp = localStorage.getItem('exp');
 
     console.log(nivel);
 
@@ -28,6 +30,8 @@ export default function setBattle(k,data) {
     });
     let pmon = monsJ[0];
     let emon = monsE[0];
+
+    console.log(pmon);
 
     let pi = 0;
     let pe = 0;
@@ -57,7 +61,7 @@ export default function setBattle(k,data) {
 
     function viene(name,flag) {
         if (flag) {
-            nombreJugador.text = name;
+            nombreJugador.text = pmon.name;
             playerMon = k.add([
                 k.sprite(name),
                 k.scale(1.7),
@@ -110,6 +114,13 @@ export default function setBattle(k,data) {
         k.color(10, 10, 10),
         k.pos(10, 10)
     ]);
+
+    const statsJugador = playerMonHealthBox.add([
+        k.text('lv:'+nivel, { size: 20 }),
+        k.color(10, 10, 10),
+        k.pos(320, 20)
+    ]);
+
     
     playerMonHealthBox.add([
         k.rect(370, 10),
@@ -150,6 +161,12 @@ export default function setBattle(k,data) {
         k.text(emon.name, { size: 32 }),
         k.color(10, 10, 10),
         k.pos(10, 10)
+    ]);
+
+    const statsEnemigo = enemyMonHealthBox.add([
+        k.text('lv:'+1, { size: 20 }),
+        k.color(10, 10, 10),
+        k.pos(320, 20)
     ]);
 
     enemyMonHealthBox.add([
@@ -284,9 +301,9 @@ export default function setBattle(k,data) {
         );
     }
 
-    function ataqueElementalEnemy() {
+    function ataqueElementalEnemy(nameAttack) {
         const ataque = k.add([
-            k.sprite("aire"),
+            k.sprite(nameAttack),
             k.scale(1.5),
             k.pos(1000, 0),
             k.opacity(1),
@@ -319,9 +336,9 @@ export default function setBattle(k,data) {
 
     }
 
-    function ataqueElementalPlayer() {
+    function ataqueElementalPlayer(nameAttack) {
         const ataque = k.add([
-            k.sprite("aire"),
+            k.sprite(nameAttack),
             k.scale(1.5),
             k.pos(300, 300),
             k.opacity(1),
@@ -440,24 +457,24 @@ export default function setBattle(k,data) {
 
         if (phase === 'enemy-turn') {
             const ataqueEnemigo = Math.floor(Math.random() * 4);
-            let damageDealt = 0;
+            let damageDealt = 1;
             switch (ataqueEnemigo) {
-                case 1:
-                    damageDealt = Math.floor(Math.random() * 11) + 10;
+                case 0:
+                    damageDealt = Math.floor(Math.random() * 11) + 5;
                     makeMonPunchEnemy(enemyMon);
                     k.play("sonido1");
                 break;
-                case 2:
+                case 1:
                     damageDealt = Math.floor(Math.random() * 11) + 15;
-                    ataqueElementalEnemy()
+                    ataqueElementalEnemy(emon.ataqueElemental)
                     k.play("sonido2");
                 break;
-                case 3:
+                case 2:
                     damageDealt = Math.floor(Math.random() * 11) + (10);
                     ataqueEspecialEnemigo(enemyMon);
                     k.play("sonido3");
                 break;
-                case 4:
+                case 3:
                     damageDealt = Math.floor(Math.random() * 11) + 15;
                     makeMonPunchEnemy(enemyMon);
                     k.play("sonido4");
@@ -481,22 +498,22 @@ export default function setBattle(k,data) {
             let damageDealt = 0;
             switch (char) {
                 case '1':
-                    damageDealt = Math.floor(Math.random() * 11) + nivel*10;
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*5;
                     makeMonPunchPlayer(playerMon);
                     k.play("sonido1");
                 break;
                 case '2':
-                    damageDealt = Math.floor(Math.random() * 11) + nivel*15;
-                    ataqueElementalPlayer();
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*7;
+                    ataqueElementalPlayer(pmon.ataqueElemental);
                     k.play("sonido2");
                 break;
                 case '3':
-                    damageDealt = Math.floor(Math.random() * 11) + nivel*10;
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*5;
                     ataqueEspecialPlayer(playerMon);
                     k.play("sonido3");
                 break;
                 case '4':
-                    damageDealt = Math.floor(Math.random() * 11) + nivel*15;
+                    damageDealt = Math.floor(Math.random() * 11) + nivel*7;
                     makeMonPunchPlayer(playerMon);
                     k.play("sonido4");
                 break;
@@ -557,9 +574,15 @@ export default function setBattle(k,data) {
                 }, 1000);
                 setTimeout(() => {
                     k.go('world');
-                    nivel++;
-                    localStorage.setItem('nivel',nivel);
-                    console.log('este es el nivel ahora: '+nivel);
+                    if (exp === '3') {
+                        localStorage.setItem('exp',0)
+                        nivel++;
+                        localStorage.setItem('nivel',nivel);
+                    }else{
+                        exp++;
+                        localStorage.setItem('exp',exp)
+                    }
+
                     sonido.paused = true;
                 }, 2000);
             }
@@ -580,8 +603,6 @@ export default function setBattle(k,data) {
                 }, 1000);
                 setTimeout(() => {
                     k.go('world');
-
-                    console.log('este es el nivel ahora: '+nivel);
                     sonido.paused = true;
                 }, 2000);
             }
