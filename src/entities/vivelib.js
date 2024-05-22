@@ -32,15 +32,15 @@ export async function startInteraction(k, vivelib, player) {
   }
 
   const responses = vivelibLines["spanish"];
-
+  
   let NbTalkedVivelib = vivelibState.getNbTalkedVivelib();
   if (responses[NbTalkedVivelib]) {
     await dialog(k, k.vec2(250, 500), responses[NbTalkedVivelib]);
     vivelibState.setNbTalkedVivelib(NbTalkedVivelib + 1);
     return;
   }
+  k.go("setBattle",{info:[[1,5,7],[9,15,26]]})
 
-  //Pon aqui la batalla
 }
 
 export function endInteraction(vivelib) {

@@ -1,4 +1,10 @@
 import {
+  endInteraction,
+  generateYeleniaComponents,
+  startInteraction,
+} from "../../entities/yelenia.js";
+
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -12,11 +18,12 @@ import {
 
 export default async function downClassroom_6(k) {
   colorizeBackground(k, 58, 58, 80);
-
+  localStorage.setItem('spawn','downClassroom_6');
   const mapData = await fetchMapData("./assets/maps/salonAbajo6.json");
   const map = k.add([k.pos(520, 200)]);
 
   const entities = {
+    yelenia:null,
     player: null,
   };
 
@@ -35,6 +42,13 @@ export default async function downClassroom_6(k) {
           );
           continue;
         }
+
+        if (object.name === "Yelenia") {
+          entities.yelenia = map.add(
+            generateYeleniaComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -48,6 +62,14 @@ export default async function downClassroom_6(k) {
   entities.player.onCollide("classroom - exit", () => {
     gameState.setPreviousScene("DownClassroom_6");
     k.go("firstFloor");
+  });
+
+  entities.player.onCollide("yelenia", async () => {
+    await startInteraction(k, entities.yelenia, entities.player);
+  });
+
+  entities.player.onCollideEnd("yelenia", () => {
+    endInteraction(entities.yelenia);
   });
 
   

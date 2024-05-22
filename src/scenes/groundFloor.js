@@ -11,6 +11,8 @@ import {
 } from "../utils.js";
 
 export default async function groundFloor(k) {
+    localStorage.setItem('spawn','groundFloor');
+    localStorage.setItem('enemigo',5);
     const previousScene = gameState.getPreviousScene();
     colorizeBackground(k, 58, 58, 80);
     const mapData = await fetchMapData("./assets/maps/PlantaBaja.json");
@@ -78,7 +80,10 @@ export default async function groundFloor(k) {
         gameState.setPreviousScene("groundFloor");
         k.go("firstFloor");
       });
-    
+
+      const enemy = Math.floor(Math.random() * 30);
+      entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[1,5,7],[enemy]]}));
+
     k.camScale(2);
     k.camPos(entities.player.worldPos());
     k.onUpdate(async () => {

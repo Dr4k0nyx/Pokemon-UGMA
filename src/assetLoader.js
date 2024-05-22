@@ -109,6 +109,17 @@ export function loadAssets() {
         "vivelib-up": 12,
       }
     });
+
+    k.loadSprite("yelenia", "./assets/Yelenia.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "yelenia-down": 0,
+        "yelenia-side": 4,
+        "yelenia-up": 12,
+      }
+    });
     
     k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
       sliceX: 7,

@@ -17,7 +17,9 @@ import {
 
 export default async function upClassroom_9(k) {
   colorizeBackground(k, 58, 58, 80);
-
+  localStorage.setItem('spawn','upClassroom_9');
+  const nivel = parseInt(localStorage.getItem('nivel')) + 2;
+  localStorage.setItem('enemigo',nivel);
   const mapData = await fetchMapData("./assets/maps/salonArriba9.json");
   const map = k.add([k.pos(520, 200)]);
 

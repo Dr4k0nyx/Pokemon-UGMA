@@ -10,7 +10,7 @@ export default function setBattle(k,data) {
     }
 
     let spawn = localStorage.getItem('spawn');
-
+    let nivelEnemigo = localStorage.getItem('enemigo');
     let nivel = localStorage.getItem('nivel');
     let exp = localStorage.getItem('exp');
 
@@ -166,7 +166,7 @@ export default function setBattle(k,data) {
     ]);
 
     const statsEnemigo = enemyMonHealthBox.add([
-        k.text('lv:'+1, { size: 20 }),
+        k.text('lv:'+nivelEnemigo, { size: 20 }),
         k.color(10, 10, 10),
         k.pos(320, 20)
     ]);
@@ -462,22 +462,22 @@ export default function setBattle(k,data) {
             let damageDealt = 1;
             switch (ataqueEnemigo) {
                 case 0:
-                    damageDealt = Math.floor(Math.random() * 11) + 5;
+                    damageDealt = Math.floor(Math.random() * 11) + nivelEnemigo*5;
                     makeMonPunchEnemy(enemyMon);
                     k.play("sonido1");
                 break;
                 case 1:
-                    damageDealt = Math.floor(Math.random() * 11) + 15;
+                    damageDealt = Math.floor(Math.random() * 11) + nivelEnemigo*15;
                     ataqueElementalEnemy(emon.ataqueElemental)
                     k.play("sonido2");
                 break;
                 case 2:
-                    damageDealt = Math.floor(Math.random() * 11) + (10);
+                    damageDealt = Math.floor(Math.random() * 11) + nivelEnemigo*(10);
                     ataqueEspecialEnemigo(enemyMon);
                     k.play("sonido3");
                 break;
                 case 3:
-                    damageDealt = Math.floor(Math.random() * 11) + 15;
+                    damageDealt = Math.floor(Math.random() * 11) + nivelEnemigo*15;
                     makeMonPunchEnemy(enemyMon);
                     k.play("sonido4");
                 break;
