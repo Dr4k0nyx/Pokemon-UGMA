@@ -3,7 +3,7 @@ const tipos = [
     {
         name:"Fuego",
         debilidad: ["Agua"],
-        ataqueElemental: "fuego"
+        ataqueElemental: "rayitos"
     },
     {
         name:"Normal",
@@ -108,6 +108,7 @@ export const monsters = [
     {
         name: "Blightstalker",
         type: tipos[1],
+        ataqueElemental: tipos[1].ataqueElemental,
         attacks: ["Tacleada", "Ataque Elemental", "Viento Plateado", "Megapuño"]
     },
     {

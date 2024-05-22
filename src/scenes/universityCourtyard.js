@@ -11,10 +11,14 @@ import {
 } from "../utils.js";
 
 export default async function universityCourtyard(k) {
+    localStorage.setItem('spawn','universityCourtyard');
+    localStorage.setItem('enemigo',1);
     const previousScene = gameState.getPreviousScene();
     colorizeBackground(k, 58, 58, 80);
     const mapData = await fetchMapData("./assets/maps/patio.json");
     const map = k.add([k.pos(0,0)]);
+
+    localStorage.setItem('spawn','universityCourtyard');
 
     const entities = {
         player: null,
@@ -57,6 +61,9 @@ export default async function universityCourtyard(k) {
         gameState.setPreviousScene("universityCourtyard");
         k.go("groundFloor");
     });
+
+    const enemy = Math.floor(Math.random() * 30);
+    entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[1,5,7],[enemy]]}));
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());

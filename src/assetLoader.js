@@ -101,6 +101,29 @@ export function loadAssets() {
         },
     });
     
+
+    k.loadSprite("vivelib", "./assets/vivelib.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "vivelib-down": 0,
+        "vivelib-side": 4,
+        "vivelib-up": 12,
+      }
+    });
+
+    k.loadSprite("yelenia", "./assets/Yelenia.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "yelenia-down": 0,
+        "yelenia-side": 4,
+        "yelenia-up": 12,
+      }
+    });
+    
     k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
       sliceX: 7,
       sliceY: 8,

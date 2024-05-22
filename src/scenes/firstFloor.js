@@ -11,6 +11,8 @@ import {
 } from "../utils.js";
 
 export default async function firstFloor(k) {
+    localStorage.setItem('spawn','firstFloor');
+    localStorage.setItem('enemigo',10);
     const previousScene = gameState.getPreviousScene();
     colorizeBackground(k, 58, 58, 80);
     const mapData = await fetchMapData("./assets/maps/PisoUno.json");
@@ -141,7 +143,8 @@ export default async function firstFloor(k) {
         gameState.setPreviousScene("firstFloor");
         k.go("groundFloor");
     });
-    entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[0],[4]]}));
+    const enemy = Math.floor(Math.random() * 30);
+    entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[1,5,7],[enemy]]}));
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());
