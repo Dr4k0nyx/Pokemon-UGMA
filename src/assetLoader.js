@@ -63,6 +63,8 @@ export function loadAssets() {
     k.loadSprite("razorquill",   ruta   +   '164.png'     );
     k.loadSprite("Inferno",      ruta   +   '184sb.png'   );
     k.loadSprite("inferno",      ruta   +   '184s.png'    );
+    
+    k.loadSprite("logo", "./assets/UGMA-QUEST.png");
 
     k.loadSprite("assets", "./assets/tiles.png", {
         sliceX: 10,
@@ -98,6 +100,7 @@ export function loadAssets() {
             },
         },
     });
+    
 
     k.loadSprite("vivelib", "./assets/vivelib.png", {
       sliceX: 4,
@@ -142,7 +145,6 @@ export function loadAssets() {
     k.loadSprite("veneno",       ruta   +   'veneno.png'     );
     k.loadSprite("rayitos",      ruta   +   'rayitos.png'    );
     k.loadSprite("piedra",       ruta   +   'piedra.png'     );
-    k.loadSprite("fuego",       ruta   +   'fire.png'     );
 
     /*Tema de batalla */
     k.loadSound("battle", "src/mp3/battle.mp3");
@@ -150,4 +152,5 @@ export function loadAssets() {
     k.loadSound("sonido2", "src/mp3/sonido2.mp3");
     k.loadSound("sonido3", "src/mp3/sonido3.mp3");
     k.loadSound("sonido4", "src/mp3/sonido4.wav");
+    k.loadSound('tutorial', "src/mp3/tutorial.mp3")
 }

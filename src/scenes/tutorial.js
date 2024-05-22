@@ -2,7 +2,12 @@ import { colorizeBackground } from "../utils.js";
 
 export function setTutorial(k) {
     let username = [], next = 0, select = 0, selectYN = 1;
-    colorizeBackground(k, 102, 100, 200);
+    colorizeBackground(k, 140, 140, 250);
+
+    const play = k.play('tutorial', {
+        volume: 0.4,
+        loop: true
+    });
 
     k.add([k.pos(0,0)]);
 

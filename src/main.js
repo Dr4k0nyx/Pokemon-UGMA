@@ -25,6 +25,8 @@ import setBattle from "./scenes/battle.js";
 import groundFloor from "./scenes/groundFloor.js";
 import universityCourtyard from "./scenes/universityCourtyard.js";
 import { loadAssets } from './assetLoader.js';
+import { setTutorial } from "./scenes/tutorial.js";
+import { setTitle } from "./scenes/title.js";
 
 loadAssets();
 
@@ -54,10 +56,12 @@ const scenes = {
     groundFloor,
     universityCourtyard,
     market,
+    setTutorial,
+    setTitle
 };
 
 for (const sceneName in scenes) {
     k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-k.go('upClassroom_9');
+k.go('setTitle')
