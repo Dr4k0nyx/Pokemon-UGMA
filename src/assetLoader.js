@@ -115,6 +115,7 @@ export function loadAssets() {
     k.loadSprite("veneno",       ruta   +   'veneno.png'     );
     k.loadSprite("rayitos",      ruta   +   'rayitos.png'    );
     k.loadSprite("piedra",       ruta   +   'piedra.png'     );
+    k.loadSprite("fuego",       ruta   +   'fire.png'     );
 
     /*Tema de batalla */
     k.loadSound("battle", "src/mp3/battle.mp3");
