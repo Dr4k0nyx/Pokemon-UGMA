@@ -4,6 +4,7 @@ export default function globalStateManager() {
   function createInstance() {
     let previousScene = null;
     let freezePlayer = false;
+    let fontSize = 30;
 
     return {
       setPreviousScene(sceneName) {
@@ -14,6 +15,11 @@ export default function globalStateManager() {
         freezePlayer = value;
       },
       getFreezePlayer: () => freezePlayer,
+      getLocale: () => locale,
+      setFontSize(size) {
+        fontSize = size;
+      },
+      getFontSize: () => fontSize,
     };
   }
 

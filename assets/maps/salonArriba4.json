@@ -381,6 +381,18 @@
                  "width":0,
                  "x":127.550877192982,
                  "y":678.175438596491
+                }, 
+                {
+                 "height":0,
+                 "id":26,
+                 "name":"Luis",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":212.884210526316,
+                 "y":206.59649122807
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -459,7 +471,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":25,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

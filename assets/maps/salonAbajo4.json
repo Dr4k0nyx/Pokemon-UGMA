@@ -361,7 +361,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -381,6 +381,18 @@
                  "width":0,
                  "x":126.652631578947,
                  "y":149.108771929825
+                }, 
+                {
+                 "height":0,
+                 "id":27,
+                 "name":"Vicenzo",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":232.645614035088,
+                 "y":582.063157894737
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -459,7 +471,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":23,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
