@@ -9,6 +9,8 @@ export default function setBattle(k,data) {
         localStorage.setItem('exp',0);
     }
 
+    let spawn = localStorage.getItem('spawn');
+
     let nivel = localStorage.getItem('nivel');
     let exp = localStorage.getItem('exp');
 
@@ -573,7 +575,7 @@ export default function setBattle(k,data) {
                     content.text = emon.name + ' won the battle!';
                 }, 1000);
                 setTimeout(() => {
-                    k.go('world');
+                    k.go(spawn);
                     if (exp === '3') {
                         localStorage.setItem('exp',0)
                         nivel++;
@@ -602,7 +604,7 @@ export default function setBattle(k,data) {
                     content.text = 'Tu equipo ha pedido vida, vuelvelo a intentar!';
                 }, 1000);
                 setTimeout(() => {
-                    k.go('world');
+                    k.go(spawn);
                     sonido.paused = true;
                 }, 2000);
             }

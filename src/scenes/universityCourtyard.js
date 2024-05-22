@@ -16,6 +16,8 @@ export default async function universityCourtyard(k) {
     const mapData = await fetchMapData("./assets/maps/patio.json");
     const map = k.add([k.pos(0,0)]);
 
+    localStorage.setItem('spawn','universityCourtyard');
+
     const entities = {
         player: null,
     };
