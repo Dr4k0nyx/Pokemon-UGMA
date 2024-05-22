@@ -1,4 +1,9 @@
 import {
+  endInteraction,
+  generateVivelibComponents,
+  startInteraction,
+} from "../../entities/vivelib.js";
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -17,6 +22,7 @@ export default async function upClassroom_9(k) {
   const map = k.add([k.pos(520, 200)]);
 
   const entities = {
+    vivelib: null,
     player: null,
   };
 
@@ -35,6 +41,13 @@ export default async function upClassroom_9(k) {
           );
           continue;
         }
+
+        if (object.name === "Vivelib") {
+          entities.vivelib = map.add(
+            generateVivelibComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -48,6 +61,14 @@ export default async function upClassroom_9(k) {
   entities.player.onCollide("classroom - exit", () => {
     gameState.setPreviousScene("UpClassroom_9");
     k.go("groundFloor");
+  });
+
+  entities.player.onCollide("vivelib", async () => {
+    await startInteraction(k, entities.vivelib, entities.player);
+  });
+
+  entities.player.onCollideEnd("vivelib", () => {
+    endInteraction(entities.vivelib);
   });
 
   

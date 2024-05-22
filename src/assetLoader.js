@@ -98,6 +98,17 @@ export function loadAssets() {
             },
         },
     });
+
+    k.loadSprite("vivelib", "./assets/vivelib.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "vivelib-down": 0,
+        "vivelib-side": 4,
+        "vivelib-up": 12,
+      }
+    });
     
     k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
       sliceX: 7,

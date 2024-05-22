@@ -948,6 +948,17 @@
                  "y":426.545454545455
                 }, 
                 {
+                 "height":12.5454545454546,
+                 "id":124,
+                 "name":"pokemon",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":12.7272727272727,
+                 "x":196.25,
+                 "y":430.795454545455
+                }, 
+                {
                  "height":76.3636363636364,
                  "id":97,
                  "name":"",
@@ -1006,7 +1017,7 @@
                 {
                  "height":0,
                  "id":91,
-                 "name":"pokemon1",
+                 "name":"pokemon",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -1017,8 +1028,20 @@
                 }, 
                 {
                  "height":0,
+                 "id":125,
+                 "name":"pokemon",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":201.75,
+                 "y":439.25
+                }, 
+                {
+                 "height":0,
                  "id":92,
-                 "name":"pokemon2",
+                 "name":"pokemon",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -1030,7 +1053,7 @@
                 {
                  "height":0,
                  "id":93,
-                 "name":"pokemon3",
+                 "name":"pokemon",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -1326,7 +1349,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":122,
+ "nextobjectid":126,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

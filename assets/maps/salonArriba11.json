@@ -381,6 +381,18 @@
                  "width":0,
                  "x":127.550877192982,
                  "y":678.175438596491
+                }, 
+                {
+                 "height":0,
+                 "id":25,
+                 "name":"Thays",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":199.410526315789,
+                 "y":211.087719298246
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -459,7 +471,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":25,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

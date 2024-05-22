@@ -381,6 +381,18 @@
                  "width":0,
                  "x":126.652631578947,
                  "y":149.108771929825
+                }, 
+                {
+                 "height":0,
+                 "id":24,
+                 "name":"Alonzo",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":236.238596491228,
+                 "y":575.775438596491
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -459,7 +471,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":23,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
