@@ -11,8 +11,8 @@ import {
 } from "../utils.js";
 
 export default async function universityCourtyard(k) {
+    const previousScene = gameState.getPreviousScene();
     colorizeBackground(k, 58, 58, 80);
-
     const mapData = await fetchMapData("./assets/maps/patio.json");
     const map = k.add([k.pos(0,0)]);
 
@@ -29,8 +29,19 @@ export default async function universityCourtyard(k) {
 
         if (layer.name === "SpawnPoints") {
             for (const object of layer.objects) {
-                if (object.name === "player") {
+                if (object.name === "exitMarketPlayer" && previousScene === "market") {
                     entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),);
+                    continue;
+                }
+
+                if (object.name === "player - exitUniversity" && previousScene === "groundFloor") {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),);
+                    continue;
+                }
+
+                if (object.name === "player - beginning" && !previousScene) {
+                    entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),
+                    );
                     continue;
                 }
             }
@@ -41,6 +52,7 @@ export default async function universityCourtyard(k) {
     }
 
     setPlayerControls(k, entities.player);
+    entities.player.onCollide("market - entrance", () => k.go("market"));
     entities.player.onCollide("university - entrance", () => {
         gameState.setPreviousScene("universityCourtyard");
         k.go("groundFloor");

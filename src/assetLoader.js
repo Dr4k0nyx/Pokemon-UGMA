@@ -68,6 +68,11 @@ export function loadAssets() {
         sliceX: 10,
         sliceY: 13,
     });
+
+    k.loadSprite("shop", "./assets/tienda.png", {
+      sliceX: 10,
+      sliceY: 12,
+    });
     
     k.loadSprite("player1", "./assets/newCharacter.png", {
         sliceX: 4,

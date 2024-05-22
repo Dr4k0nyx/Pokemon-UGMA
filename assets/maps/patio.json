@@ -377,6 +377,17 @@
                  "width":114.333333333333,
                  "x":534.666666666667,
                  "y":309
+                }, 
+                {
+                 "height":18.3636363636364,
+                 "id":32,
+                 "name":"market - entrance",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":56.7272727272727,
+                 "x":213.272727272727,
+                 "y":501.636363636364
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -392,7 +403,7 @@
                 {
                  "height":0,
                  "id":1,
-                 "name":"player",
+                 "name":"player - exitUniversity",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -400,6 +411,30 @@
                  "width":0,
                  "x":593.333333333333,
                  "y":376.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"player - beginning",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1407.5,
+                 "y":529.5
+                }, 
+                {
+                 "height":0,
+                 "id":33,
+                 "name":"exitMarketPlayer",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":254,
+                 "y":569.272727272727
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -443,7 +478,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":30,
+ "nextobjectid":34,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

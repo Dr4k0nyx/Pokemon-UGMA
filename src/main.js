@@ -1,5 +1,5 @@
 import k from "./kaboomContext.js";
-import world from "./scenes/world.js";
+import firstFloor from "./scenes/firstFloor.js";
 import upClassroom_1 from "./scenes/UpClassrooms/UpClassroom_1.js";
 import upClassroom_2 from "./scenes/UpClassrooms/UpClassroom_2.js";
 import upClassroom_3 from "./scenes/UpClassrooms/UpClassroom_3.js";
@@ -20,6 +20,7 @@ import downClassroom_5 from "./scenes/DownClassrooms/DownClassroom_5.js";
 import downClassroom_6 from "./scenes/DownClassrooms/DownClassroom_6.js";
 import downClassroom_7 from "./scenes/DownClassrooms/DownClassroom_7.js";
 import downClassroom_8 from "./scenes/DownClassrooms/DownClassroom_8.js";
+import market from "./scenes/market.js";
 import setBattle from "./scenes/battle.js";
 import groundFloor from "./scenes/groundFloor.js";
 import universityCourtyard from "./scenes/universityCourtyard.js";
@@ -28,7 +29,7 @@ import { loadAssets } from './assetLoader.js';
 loadAssets();
 
 const scenes = {
-    world,
+    firstFloor,
     upClassroom_1,
     upClassroom_2,
     upClassroom_3,
@@ -52,10 +53,11 @@ const scenes = {
     setBattle,
     groundFloor,
     universityCourtyard,
+    market,
 };
 
 for (const sceneName in scenes) {
     k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-k.go('world')
+k.go('universityCourtyard')

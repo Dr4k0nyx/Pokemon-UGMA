@@ -54,7 +54,7 @@ export default async function groundFloor(k) {
                     continue;
                 }
 
-                if (object.name === "entranceFloorPlayer" && previousScene === "world") {
+                if (object.name === "entranceFloorPlayer" && previousScene === "firstFloor") {
                     entities.player = map.add(generatePlayerComponents(k, k.vec2(object.x, object.y)),);
                     continue;
                 }
@@ -66,14 +66,17 @@ export default async function groundFloor(k) {
     }
 
     setPlayerControls(k, entities.player);
-    entities.player.onCollide("university - exit", () => k.go("universityCourtyard"));
+    entities.player.onCollide("university - exit", () => {
+        gameState.setPreviousScene("groundFloor");
+        k.go("universityCourtyard");
+    });
     entities.player.onCollide("UpClassroom_9 - entrance", () => k.go("upClassroom_9"));
     entities.player.onCollide("UpClassroom_10 - entrance", () => k.go("upClassroom_10"));
     entities.player.onCollide("UpClassroom_11 - entrance", () => k.go("upClassroom_11"));
     entities.player.onCollide("UpClassroom_12 - entrance", () => k.go("upClassroom_12"));
     entities.player.onCollide("firstFloor - entrance", () => {
         gameState.setPreviousScene("groundFloor");
-        k.go("world");
+        k.go("firstFloor");
       });
     
     k.camScale(2);
