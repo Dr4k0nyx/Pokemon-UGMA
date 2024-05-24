@@ -28,6 +28,8 @@ import { loadAssets } from './assetLoader.js';
 import { setTutorial } from "./scenes/tutorial.js";
 import { setTitle } from "./scenes/title.js";
 
+localStorage.setItem('vivelib - battle', 0);
+
 loadAssets();
 
 const scenes = {
