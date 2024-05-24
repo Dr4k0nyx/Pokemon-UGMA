@@ -365,12 +365,16 @@ export function setTutorial(k) {
                     boxEsc.destroy();
                     contentEsc.destroy();
                     infoEscKey.destroy();
+                    content.destroy();
+                    box.destroy();
                 }
                 if(infoAdventure !== undefined) infoAdventure.destroy();
+                play.paused = true;
+                event.cancel();
                 k.go('universityCourtyard')
             }
         }
     }
 
-    k.onKeyPress("space", eventSpace);
+    const event = k.onKeyPress("space", eventSpace);
 }

@@ -115,6 +115,7 @@ export const monsters = [
         name: "Dreadfang",
         type: tipos[2].name,
         weaknesses: tipos[2].debilidad,
+        ataqueElemental: tipos[2].ataqueElemental,
         attacks: ["Tacleada", "Ataque Elemental", "Latigazo", "Avalancha"]
     },
     {
@@ -162,6 +163,8 @@ export const monsters = [
     {
         name: "Glaciermaw",
         type: tipos[1],
+        weaknesses: tipos[0].debilidad,
+        ataqueElemental: tipos[1].ataqueElemental,
         attacks: ["Tacleada", "Ataque Elemental", "Vendaval", "Viento Hielo"]
     },
     {
@@ -174,7 +177,7 @@ export const monsters = [
     {
         name: "Quakebeast",
         type: tipos[3].name,
-        ataqueElemental: tipos[2].ataqueElemental,
+        ataqueElemental: tipos[3].ataqueElemental,
         weaknesses: tipos[3].debilidad,
         attacks: ["Tacleada", "Ataque Elemental", "Latigazo", "Golpe Cuerpo"]
     },
@@ -214,20 +217,23 @@ export const monsters = [
         attacks: ["Tacleada", "Ataque Elemental", "Golpe Aéreo", "Puño Fuego"]
     },
     {
-        name: "Abyssal Leviathan",
+        name: "Abyssal",
         type: tipos[1],
+        ataqueElemental: tipos[1].ataqueElemental,
+        weaknesses: tipos[1].debilidad,
         attacks: ["Tacleada", "Ataque Elemental", "Golpe Bajo", "Cabezazo"]
     },
     {
         name: "Eclipse",
         type: tipos[2].name,
+        ataqueElemental: tipos[2].ataqueElemental,
         weaknesses: tipos[2].debilidad,
         attacks: ["Tacleada", "Ataque Elemental", "Placaje", "Pisotón"]
     },
     {
         name: "Razorquill",
         type: tipos[3].name,
-        ataqueElemental: tipos[2].ataqueElemental,
+        ataqueElemental: tipos[3].ataqueElemental,
         weaknesses: tipos[3].debilidad,
         attacks: ["Tacleada", "Ataque Elemental", "Lanzarrocas", "Poder Oculto"]
     },

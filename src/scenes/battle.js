@@ -2,6 +2,8 @@ import { monsters } from '../battleComponent.js'
 
 export default function setBattle(k,data) {
 
+    const { dataRival } = data;
+
     if (!('nivel' in localStorage)){
         localStorage.setItem('nivel',1);
     }
@@ -429,17 +431,22 @@ export default function setBattle(k,data) {
     let cancion = true;
     let selectAtaque;
     let phase = 'player-selection';
-    let sonido;
+    const boss = JSON.parse(localStorage.getItem('boss'));
+    if(boss) localStorage.setItem('boss', false);
+    const battleMusic = k.play((boss) ? 'battleBoss' : "battle",{
+        volume:0.3,
+        loop:true
+    });
     k.onCharInput( (char) => {
-        if (cancion) {
-            sonido = k.play("battle",{
-                volume:0.5,
-                loop:true
-            });
-            cancion = false;
-        }
         console.log(/^\d+$/.test(char));
-        if (pmon.fainted || emon.fainted) return;
+        if (pmon.fainted || emon.fainted) {
+            battleMusic.paused = true;
+            if(dataRival) {
+                if(emon.fainted) localStorage.setItem(dataRival, 2);
+                else localStorage.setItem(dataRival, 1);
+            }
+            return;
+        } 
 
         if (phase === 'player-selection') {
             content.text = 'Presiona un numero para elegir el ataque! \n\n 1)' + pmon.attacks[0] +  '        2)' + pmon.attacks[1] +  ' \n 3)' + pmon.attacks[2] +  '      4)' + pmon.attacks[3];
@@ -585,7 +592,7 @@ export default function setBattle(k,data) {
                         localStorage.setItem('exp',exp)
                     }
 
-                    sonido.paused = true;
+                    battleMusic.paused = true;
                 }, 2000);
             }
         }
@@ -605,7 +612,7 @@ export default function setBattle(k,data) {
                 }, 1000);
                 setTimeout(() => {
                     k.go(spawn);
-                    sonido.paused = true;
+                    battleMusic.paused = true;
                 }, 2000);
             }
         }

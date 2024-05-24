@@ -16,6 +16,11 @@ export default async function upClassroom_8(k) {
   const mapData = await fetchMapData("./assets/maps/salonArriba8.json");
   const map = k.add([k.pos(520, 200)]);
 
+  const classroomMusic = k.play('classroom', {
+    volume: 0.4,
+    loop: true
+  });
+
   const entities = {
     player: null,
   };
@@ -46,6 +51,7 @@ export default async function upClassroom_8(k) {
   k.camScale(2);
   setPlayerControls(k, entities.player);
   entities.player.onCollide("classroom - exit", () => {
+    classroomMusic.paused = true;
     gameState.setPreviousScene("UpClassroom_8");
     k.go("firstFloor");
   });

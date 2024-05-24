@@ -18,6 +18,11 @@ export default async function firstFloor(k) {
     const mapData = await fetchMapData("./assets/maps/PisoUno.json");
     const map = k.add([k.pos(0,0)]);
 
+    const firstFloorMusic = k.play('firstFloor', {
+        volume: 0.5, 
+        loop: true
+    });
+
     const entities = {
         player: null,
     };
@@ -123,28 +128,80 @@ export default async function firstFloor(k) {
     }
 
     setPlayerControls(k, entities.player);
-    entities.player.onCollide("UpClassroom_1 - entrance", () => k.go("upClassroom_1"));
-    entities.player.onCollide("UpClassroom_2 - entrance", () => k.go("upClassroom_2"));
-    entities.player.onCollide("UpClassroom_3 - entrance", () => k.go("upClassroom_3"));
-    entities.player.onCollide("UpClassroom_4 - entrance", () => k.go("upClassroom_4"));
-    entities.player.onCollide("UpClassroom_5 - entrance", () => k.go("upClassroom_5"));
-    entities.player.onCollide("UpClassroom_6 - entrance", () => k.go("upClassroom_6"));
-    entities.player.onCollide("UpClassroom_7 - entrance", () => k.go("upClassroom_7"));
-    entities.player.onCollide("UpClassroom_8 - entrance", () => k.go("upClassroom_8"));
-    entities.player.onCollide("DownClassroom_1 - entrance", () => k.go("downClassroom_1"));
-    entities.player.onCollide("DownClassroom_2 - entrance", () => k.go("downClassroom_2"));
-    entities.player.onCollide("DownClassroom_3 - entrance", () => k.go("downClassroom_3"));
-    entities.player.onCollide("DownClassroom_4 - entrance", () => k.go("downClassroom_4"));
-    entities.player.onCollide("DownClassroom_5 - entrance", () => k.go("downClassroom_5"));
-    entities.player.onCollide("DownClassroom_6 - entrance", () => k.go("downClassroom_6"));
-    entities.player.onCollide("DownClassroom_7 - entrance", () => k.go("downClassroom_7"));
-    entities.player.onCollide("DownClassroom_8 - entrance", () => k.go("downClassroom_8"));
+    entities.player.onCollide("UpClassroom_1 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_1");
+    });
+    entities.player.onCollide("UpClassroom_2 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_2");
+    });
+    entities.player.onCollide("UpClassroom_3 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_3");
+    });
+    entities.player.onCollide("UpClassroom_4 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_4");
+    });
+    entities.player.onCollide("UpClassroom_5 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_5");
+    });
+    entities.player.onCollide("UpClassroom_6 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_6");
+    });
+    entities.player.onCollide("UpClassroom_7 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_7");
+    });
+    entities.player.onCollide("UpClassroom_8 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("upClassroom_8");
+    });
+    entities.player.onCollide("DownClassroom_1 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_1");
+    });
+    entities.player.onCollide("DownClassroom_2 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_2");
+    });
+    entities.player.onCollide("DownClassroom_3 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_3");
+    });
+    entities.player.onCollide("DownClassroom_4 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_4");
+    });
+    entities.player.onCollide("DownClassroom_5 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_5");
+    });
+    entities.player.onCollide("DownClassroom_6 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_6");
+    });
+    entities.player.onCollide("DownClassroom_7 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_7");
+    });
+    entities.player.onCollide("DownClassroom_8 - entrance", () => {
+        firstFloorMusic.paused = true;
+        k.go("downClassroom_8");
+    });
     entities.player.onCollide("groundFloor - entrance", () => {
+        firstFloorMusic.paused = true;
         gameState.setPreviousScene("firstFloor");
         k.go("groundFloor");
     });
     const enemy = Math.floor(Math.random() * 30);
-    entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[1,5,7],[enemy]]}));
+    entities.player.onCollide("pokemon", () => {
+        firstFloorMusic.paused = true;
+        k.go("setBattle",{info:[[1,5,7],[enemy]]})
+    });
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());

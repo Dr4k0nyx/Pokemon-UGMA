@@ -152,5 +152,11 @@ export function loadAssets() {
     k.loadSound("sonido2", "src/mp3/sonido2.mp3");
     k.loadSound("sonido3", "src/mp3/sonido3.mp3");
     k.loadSound("sonido4", "src/mp3/sonido4.wav");
-    k.loadSound('tutorial', "src/mp3/tutorial.mp3")
+    k.loadSound('tutorial', "src/mp3/tutorial.mp3");
+    k.loadSound('patio', 'src/mp3/patio.mp3');
+    k.loadSound('battleBoss', 'src/mp3/battleBoss.mp3');
+    k.loadSound('groundFloor', 'src/mp3/groundFloor.mp3');
+    k.loadSound('firstFloor', 'src/mp3/firstFloor.mp3');
+    k.loadSound('market', "src/mp3/market.mp3");
+    k.loadSound('classroom', 'src/mp3/classroom.mp3');
 }

@@ -11,17 +11,12 @@ async function displayLine(textContainer, line) {
   }
 }
 
-export async function dialog(k, pos, content) {
+export async function dialog(k, pos, content, battle = false, info = {}) {
   gameState.setFreezePlayer(true);
 
-  const dialogBox = k.add([k.rect(800, 200), k.pos(pos), k.fixed()]);
+  const dialogBox = k.add([k.rect(1276, 300), k.pos(pos), k.outline(4), k.fixed()]);
   const textContainer = dialogBox.add([
-    k.text("", {
-      font: "gameboy",
-      width: 700,
-      lineSpacing: 15,
-      size: gameState.getFontSize(),
-    }),
+    k.text("", {size: 42}),
     k.color(0, 0, 0),
     k.pos(20, 40),
     k.fixed(),
@@ -32,13 +27,16 @@ export async function dialog(k, pos, content) {
   await displayLine(textContainer, content[index]);
   let lineFinishedDisplayed = true;
   const dialogKey = k.onKeyPress("space", async () => {
-    if (!lineFinishedDisplayed) return;
+    if (!lineFinishedDisplayed) {
+      return;
+    }
 
     index++;
     if (!content[index]) {
       k.destroy(dialogBox);
       dialogKey.cancel();
       gameState.setFreezePlayer(false);
+      if(battle) k.go('setBattle', info);
       return;
     }
 

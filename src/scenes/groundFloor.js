@@ -18,6 +18,10 @@ export default async function groundFloor(k) {
     const mapData = await fetchMapData("./assets/maps/PlantaBaja.json");
     const map = k.add([k.pos(0,0)]);
 
+    const groundFloorMusic = k.play('groundFloor', {
+        volume: 0.5, loop: true
+    });
+
     const entities = {
         player: null,
     };
@@ -69,20 +73,37 @@ export default async function groundFloor(k) {
 
     setPlayerControls(k, entities.player);
     entities.player.onCollide("university - exit", () => {
+        groundFloorMusic.paused = true;
         gameState.setPreviousScene("groundFloor");
         k.go("universityCourtyard");
     });
-    entities.player.onCollide("UpClassroom_9 - entrance", () => k.go("upClassroom_9"));
-    entities.player.onCollide("UpClassroom_10 - entrance", () => k.go("upClassroom_10"));
-    entities.player.onCollide("UpClassroom_11 - entrance", () => k.go("upClassroom_11"));
-    entities.player.onCollide("UpClassroom_12 - entrance", () => k.go("upClassroom_12"));
+    entities.player.onCollide("UpClassroom_9 - entrance", () => {
+        groundFloorMusic.paused = true;
+        k.go("upClassroom_9")
+    });
+    entities.player.onCollide("UpClassroom_10 - entrance", () => {
+        groundFloorMusic.paused = true;
+        k.go("upClassroom_10");
+    });
+    entities.player.onCollide("UpClassroom_11 - entrance", () => {
+        groundFloorMusic.paused = true;
+        k.go("upClassroom_11");
+    });
+    entities.player.onCollide("UpClassroom_12 - entrance", () => {
+        groundFloorMusic.paused = true;
+        k.go("upClassroom_12");
+    });
     entities.player.onCollide("firstFloor - entrance", () => {
+        groundFloorMusic.paused = true;
         gameState.setPreviousScene("groundFloor");
         k.go("firstFloor");
       });
 
       const enemy = Math.floor(Math.random() * 30);
-      entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[1,5,7],[enemy]]}));
+      entities.player.onCollide("pokemon", () => {
+        groundFloorMusic.paused = true;
+        k.go("setBattle",{info:[[1,5,7],[enemy]]});
+    });
 
     k.camScale(2);
     k.camPos(entities.player.worldPos());
