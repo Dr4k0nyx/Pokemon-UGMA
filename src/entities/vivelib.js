@@ -31,16 +31,19 @@ export async function startInteraction(k, vivelib, player) {
     playAnimIfNotPlaying(vivelib, "vivelib-up");
   }
 
+  const dataRival = 'vivelib - battle';
+  const lines = JSON.parse(localStorage.getItem('vivelib - battle'));
+
   const responses = vivelibLines["spanish"];
+  vivelibState.setNbTalkedVivelib(lines);
   
   let NbTalkedVivelib = vivelibState.getNbTalkedVivelib();
-  if (responses[NbTalkedVivelib]) {
-    await dialog(k, k.vec2(250, 500), responses[NbTalkedVivelib]);
-    vivelibState.setNbTalkedVivelib(NbTalkedVivelib + 1);
-    return;
+  if (NbTalkedVivelib === 1 || NbTalkedVivelib === 0) {
+    localStorage.setItem('boss', true);
+    await dialog(k, k.vec2(2, 520), responses[NbTalkedVivelib], true, {info:[[1,5,7],[9,15,26]], dataRival});
+  } else {
+    await dialog(k, k.vec2(2, 520), responses[NbTalkedVivelib]);
   }
-  k.go("setBattle",{info:[[1,5,7],[9,15,26]]})
-
 }
 
 export function endInteraction(vivelib) {
