@@ -11,7 +11,7 @@ const spanish = [
   ],
   [
     "Veo que por fin alguien estudio",
-    "Ahora te toca pasar pena con alonso"
+    "Ahora te toca pasar pena con Alonso"
   ]
 ];
 
