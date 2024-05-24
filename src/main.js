@@ -29,6 +29,7 @@ import { setTutorial } from "./scenes/tutorial.js";
 import { setTitle } from "./scenes/title.js";
 
 localStorage.setItem('vivelib - battle', 0);
+localStorage.setItem('yelenia - battle', 0);
 
 loadAssets();
 
@@ -66,4 +67,4 @@ for (const sceneName in scenes) {
     k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-k.go('setTitle')
+k.go('downClassroom_6')
