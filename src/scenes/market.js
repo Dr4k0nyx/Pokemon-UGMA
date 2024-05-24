@@ -15,6 +15,11 @@ export default async function market(k) {
   const mapData = await fetchMapData("./assets/maps/tienda.json");
   const map = k.add([k.pos(520, 200)]);
 
+  const play = k.play('market', {
+    volume: 0.4,
+    loop:true
+  });
+
   const entities = {
     player: null,
   };
@@ -44,6 +49,7 @@ export default async function market(k) {
   k.camScale(2);
   setPlayerControls(k, entities.player);
   entities.player.onCollide("market - exit", () => {
+    play.paused = true;
     gameState.setPreviousScene("market");
     k.go("universityCourtyard");
   });

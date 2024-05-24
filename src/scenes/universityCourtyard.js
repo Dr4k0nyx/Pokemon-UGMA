@@ -20,6 +20,10 @@ export default async function universityCourtyard(k) {
 
     localStorage.setItem('spawn','universityCourtyard');
 
+    const universityCourtyardMusic = k.play('patio', {
+        volume: 0.5, loop: true
+    });
+
     const entities = {
         player: null,
     };
@@ -56,14 +60,21 @@ export default async function universityCourtyard(k) {
     }
 
     setPlayerControls(k, entities.player);
-    entities.player.onCollide("market - entrance", () => k.go("market"));
+    entities.player.onCollide("market - entrance", () => {
+        universityCourtyardMusic.paused = true;
+        k.go("market");
+    });
     entities.player.onCollide("university - entrance", () => {
+        universityCourtyardMusic.paused = true;
         gameState.setPreviousScene("universityCourtyard");
         k.go("groundFloor");
     });
 
     const enemy = Math.floor(Math.random() * 30);
-    entities.player.onCollide("pokemon", () => k.go("setBattle",{info:[[1,5,7],[enemy]]}));
+    entities.player.onCollide("pokemon", () => {
+        universityCourtyardMusic.paused = true;
+        k.go("setBattle",{info:[[1,5,7],[enemy]]});
+    });
     
     k.camScale(2);
     k.camPos(entities.player.worldPos());
