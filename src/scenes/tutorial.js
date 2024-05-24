@@ -371,7 +371,6 @@ export function setTutorial(k) {
                 if(infoAdventure !== undefined) infoAdventure.destroy();
                 play.paused = true;
                 event.cancel();
-                play.cancel();
                 k.go('universityCourtyard')
             }
         }
