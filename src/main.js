@@ -29,7 +29,12 @@ import { setTutorial } from "./scenes/tutorial.js";
 import { setTitle } from "./scenes/title.js";
 
 localStorage.setItem('vivelib - battle', 0);
+localStorage.setItem('thays - battle', 0);
+localStorage.setItem('alonso - battle', 0);
 localStorage.setItem('yelenia - battle', 0);
+localStorage.setItem('luis - battle', 0);
+localStorage.setItem('yumilba - battle', 0);
+localStorage.setItem('vincenzo - battle', 0);
 
 loadAssets();
 
