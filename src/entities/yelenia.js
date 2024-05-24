@@ -31,16 +31,19 @@ export async function startInteraction(k, yelenia, player) {
         playAnimIfNotPlaying(yelenia, "yelenia-up");
     }
 
+    const dataRival = 'yelenia - battle';
+    const lines = JSON.parse(localStorage.getItem('yelenia - battle'));
+
     const responses = yeleniaLines["spanish"];
+    yeleniaState.setNbTalkedYelenia(lines);
 
-    let nbTalkedYelenia = yeleniaState.getnbTalkedYelenia();
-    if (responses[nbTalkedYelenia]) {
-        await dialog(k, k.vec2(250, 500), responses[nbTalkedYelenia]);
-        yeleniaState.setnbTalkedYelenia(nbTalkedYelenia + 1);
-        return;
+    let nbTalkedYelenia = yeleniaState.getNbTalkedYelenia();
+    if (nbTalkedYelenia === 0 || nbTalkedYelenia === 1) {
+        localStorage.setItem('boss', true);
+        await dialog(k, k.vec2(2, 520), responses[nbTalkedYelenia], true, {info:[[1,5,7],[9,15,26]],dataRival});
+    } else {
+        await dialog(k, k.vec2(2, 520), responses[nbTalkedYelenia]);
     }
-
-    k.go("setBattle",{info:[[1,5,7],[9,15,26]]})
 }
 
 export function endInteraction(yelenia) {
