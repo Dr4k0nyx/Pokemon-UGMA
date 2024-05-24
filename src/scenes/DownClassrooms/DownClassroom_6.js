@@ -71,10 +71,12 @@ export default async function downClassroom_6(k) {
   });
 
   entities.player.onCollide("yelenia", async () => {
+    classroomMusic.paused = true;
     await startInteraction(k, entities.yelenia, entities.player);
   });
 
   entities.player.onCollideEnd("yelenia", () => {
+    classroomMusic.paused = false;
     endInteraction(entities.yelenia);
   });
 
