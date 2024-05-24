@@ -157,7 +157,7 @@ export function loadAssets() {
       }
     });
 
-    k.loadSprite("yumilba", "./assets/Yumilba.png", {
+    k.loadSprite("yumilva", "./assets/Yumilva.png", {
       sliceX: 4,
       sliceY: 4,
 
