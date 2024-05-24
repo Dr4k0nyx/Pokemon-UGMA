@@ -22,6 +22,11 @@ export default async function downClassroom_6(k) {
   const mapData = await fetchMapData("./assets/maps/salonAbajo6.json");
   const map = k.add([k.pos(520, 200)]);
 
+  const classroomMusic = k.play('classroom', {
+    volume: 0.4,
+    loop: true
+  });
+
   const entities = {
     yelenia:null,
     player: null,
@@ -60,6 +65,7 @@ export default async function downClassroom_6(k) {
   k.camScale(2);
   setPlayerControls(k, entities.player);
   entities.player.onCollide("classroom - exit", () => {
+    classroomMusic.paused = true;
     gameState.setPreviousScene("DownClassroom_6");
     k.go("firstFloor");
   });

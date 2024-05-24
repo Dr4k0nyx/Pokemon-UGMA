@@ -23,6 +23,11 @@ export default async function upClassroom_9(k) {
   const mapData = await fetchMapData("./assets/maps/salonArriba9.json");
   const map = k.add([k.pos(520, 200)]);
 
+  const classroomMusic = k.play('classroom', {
+    volume: 0.4,
+    loop: true
+  });
+
   const entities = {
     vivelib: null,
     player: null,
@@ -61,15 +66,18 @@ export default async function upClassroom_9(k) {
   k.camScale(2);
   setPlayerControls(k, entities.player);
   entities.player.onCollide("classroom - exit", () => {
+    classroomMusic.paused = true;
     gameState.setPreviousScene("UpClassroom_9");
     k.go("groundFloor");
   });
 
   entities.player.onCollide("vivelib", async () => {
+    classroomMusic.paused = true;
     await startInteraction(k, entities.vivelib, entities.player);
   });
 
   entities.player.onCollideEnd("vivelib", () => {
+    classroomMusic.paused = false;
     endInteraction(entities.vivelib);
   });
 
