@@ -113,6 +113,28 @@ export function loadAssets() {
       }
     });
 
+    k.loadSprite("alonso", "./assets/Alonso.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "alonso-down": 0,
+        "alonso-side": 4,
+        "alonso-up": 12,
+      }
+    });
+
+    k.loadSprite("thays", "./assets/Thays.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "thays-down": 0,
+        "thays-side": 4,
+        "thays-up": 12,
+      }
+    });
+
     k.loadSprite("yelenia", "./assets/Yelenia.png", {
       sliceX: 4,
       sliceY: 4,
@@ -121,6 +143,39 @@ export function loadAssets() {
         "yelenia-down": 0,
         "yelenia-side": 4,
         "yelenia-up": 12,
+      }
+    });
+
+    k.loadSprite("luis", "./assets/Luis.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "luis-down": 0,
+        "luis-side": 4,
+        "luis-up": 12,
+      }
+    });
+
+    k.loadSprite("yumilba", "./assets/Yumilba.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "yumilba-down": 0,
+        "yumilba-side": 4,
+        "yumilba-up": 12,
+      }
+    });
+
+    k.loadSprite("vincenzo", "./assets/Vincenzo.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "vincenzo-down": 0,
+        "vincenzo-side": 4,
+        "vincenzo-up": 12,
       }
     });
     
