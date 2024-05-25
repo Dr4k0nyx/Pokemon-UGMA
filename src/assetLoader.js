@@ -168,14 +168,14 @@ export function loadAssets() {
       }
     });
 
-    k.loadSprite("vincenzo", "./assets/Vincenzo.png", {
+    k.loadSprite("vicenzo", "./assets/Vicenzo.png", {
       sliceX: 4,
       sliceY: 4,
 
       anims: {
-        "vincenzo-down": 0,
-        "vincenzo-side": 4,
-        "vincenzo-up": 12,
+        "vicenzo-down": 0,
+        "vicenzo-side": 4,
+        "vicenzo-up": 12,
       }
     });
     

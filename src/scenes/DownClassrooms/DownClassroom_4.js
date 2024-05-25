@@ -1,4 +1,9 @@
 import {
+  startInteraction,
+  endInteraction,
+  generateVicenzoComponents
+} from '../../entities/vicenzo.js';
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -40,6 +45,13 @@ export default async function downClassroom_4(k) {
           );
           continue;
         }
+
+        if (object.name === "Vicenzo") {
+          entities.vicenzo = map.add(
+            generateVicenzoComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -54,6 +66,16 @@ export default async function downClassroom_4(k) {
     classroomMusic.paused = true;
     gameState.setPreviousScene("DownClassroom_4");
     k.go("firstFloor");
+  });
+
+  entities.player.onCollide("vicenzo", async () => {
+    classroomMusic.paused = true;
+    await startInteraction(k, entities.vicenzo, entities.player);
+  });
+
+  entities.player.onCollideEnd("vicenzo", () => {
+    classroomMusic.paused = false;
+    endInteraction(entities.vicenzo);
   });
 
   
