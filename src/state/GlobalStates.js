@@ -1,51 +1,174 @@
 export function vivelibGlobalStateManager() {
-    let instance = null;
+  let instance = null;
   
-    function createInstance() {
-      let nbTalkedVivelib = 0;
+  function createInstance() {
+    let nbTalkedVivelib = 0;
+
+    return {
+      setNbTalkedVivelib(value) {
+        nbTalkedVivelib = value;
+      },
+      getNbTalkedVivelib: () => nbTalkedVivelib,
+    };
+  }
   
-      return {
-        setNbTalkedVivelib(value) {
-          nbTalkedVivelib = value;
-        },
-        getNbTalkedVivelib: () => nbTalkedVivelib,
-      };
-    }
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}
+  
+export function alonsoGlobalStateManager() {
+  let instance = null;
+  
+  function createInstance() {
+    let nbTalkedAlonso = 0;
   
     return {
-      getInstance() {
-        if (!instance) {
-          instance = createInstance();
-        }
-  
-        return instance;
+      setNbTalkedAlonso(value) {
+        nbTalkedAlonso = value;
       },
+      getNbTalkedAlonso: () => nbTalkedAlonso,
+    };
+  }
+  
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+  
+      return instance;
+    },
+  };
+}
+
+export function thaysGlobalStateManager() {
+  let instance = null;
+  
+  function createInstance() {
+    let nbTalkedThays = 0;
+
+    return {
+      setNbTalkedThays(value) {
+        nbTalkedThays = value;
+      },
+      getNbTalkedThays: () => nbTalkedThays,
     };
   }
 
-  export function yeleniaGlobalStateManager() {
-    let instance = null;
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}
+
+export function yeleniaGlobalStateManager() {
+  let instance = null;
   
-    function createInstance() {
-      let nbTalkedYelenia = 0;
-  
-      return {
-        setNbTalkedYelenia(value) {
-          nbTalkedYelenia = value;
-        },
-        getNbTalkedYelenia: () => nbTalkedYelenia,
-      };
-    }
-  
+  function createInstance() {
+    let nbTalkedYelenia = 0;
+
     return {
-      getInstance() {
-        if (!instance) {
-          instance = createInstance();
-        }
-  
-        return instance;
+      setNbTalkedYelenia(value) {
+        nbTalkedYelenia = value;
       },
+      getNbTalkedYelenia: () => nbTalkedYelenia,
     };
   }
+
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}
+
+export function luisGlobalStateManager() {
+  let instance = null;
   
+  function createInstance() {
+    let nbTalkedLuis = 0;
+
+    return {
+      setNbTalkedLuis(value) {
+        nbTalkedLuis = value;
+      },
+      getNbTalkedLuis: () => nbTalkedLuis,
+    };
+  }
+
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}
+
+export function yumilvaGlobalStateManager() {
+  let instance = null;
   
+  function createInstance() {
+    let nbTalkedYumilva = 0;
+
+    return {
+      setNbTalkedYumilva(value) {
+        nbTalkedYumilva = value;
+      },
+      getNbTalkedYumilva: () => nbTalkedYumilva,
+    };
+  }
+
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}
+
+export function vicenzoGlobalStateManager() {
+  let instance = null;
+  
+  function createInstance() {
+    let nbTalkedVicenzo = 0;
+
+    return {
+      setNbTalkedVicenzo(value) {
+        nbTalkedVicenzo = value;
+      },
+      getNbTalkedVicenzo: () => nbTalkedVicenzo,
+    };
+  }
+
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}

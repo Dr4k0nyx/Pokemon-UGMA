@@ -34,7 +34,7 @@ localStorage.setItem('alonso - battle', 0);
 localStorage.setItem('yelenia - battle', 0);
 localStorage.setItem('luis - battle', 0);
 localStorage.setItem('yumilba - battle', 0);
-localStorage.setItem('vincenzo - battle', 0);
+localStorage.setItem('vicenzo - battle', 0);
 
 loadAssets();
 
