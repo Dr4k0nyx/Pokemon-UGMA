@@ -1,4 +1,9 @@
 import {
+  startInteraction,
+  endInteraction,
+  generateAlonsoComponents
+} from '../../entities/alonso.js';
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -40,6 +45,13 @@ export default async function downClassroom_7(k) {
           );
           continue;
         }
+
+        if (object.name === "Alonso") {
+          entities.alonso = map.add(
+            generateAlonsoComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -54,6 +66,16 @@ export default async function downClassroom_7(k) {
     classroomMusic.paused = true;
     gameState.setPreviousScene("DownClassroom_7");
     k.go("firstFloor");
+  });
+
+  entities.player.onCollide("alonso", async () => {
+    classroomMusic.paused = true;
+    await startInteraction(k, entities.alonso, entities.player);
+  });
+
+  entities.player.onCollideEnd("alonso", () => {
+    classroomMusic.paused = false;
+    endInteraction(entities.alonso);
   });
 
   

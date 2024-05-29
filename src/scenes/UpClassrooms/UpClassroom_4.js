@@ -1,4 +1,9 @@
 import {
+  endInteraction,
+  generateLuisComponents,
+  startInteraction,
+} from "../../entities/luis.js";
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -40,6 +45,13 @@ export default async function upClassroom_4(k) {
           );
           continue;
         }
+
+        if (object.name === "Luis") {
+          entities.luis = map.add(
+            generateLuisComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -54,6 +66,16 @@ export default async function upClassroom_4(k) {
     classroomMusic.paused = true;
     gameState.setPreviousScene("UpClassroom_4");
     k.go("firstFloor");
+  });
+
+  entities.player.onCollide("luis", async () => {
+    classroomMusic.paused = true;
+    await startInteraction(k, entities.luis, entities.player);
+  });
+
+  entities.player.onCollideEnd("luis", () => {
+    classroomMusic.paused = false;
+    endInteraction(entities.luis);
   });
 
   

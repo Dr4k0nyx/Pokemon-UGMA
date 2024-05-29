@@ -178,6 +178,17 @@ export function loadAssets() {
         "vicenzo-up": 12,
       }
     });
+
+    k.loadSprite("chavez", "./assets/Chavez.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "chavez-down": 0,
+        "chavez-side": 4,
+        "chavez-up": 12,
+      }
+    });
     
     k.loadSprite("class", "./assets/tilesSalonAbajo.png", {
       sliceX: 7,

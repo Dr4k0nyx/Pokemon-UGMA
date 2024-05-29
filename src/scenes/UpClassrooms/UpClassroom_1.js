@@ -1,4 +1,9 @@
 import {
+  startInteraction,
+  endInteraction,
+  generateChavezComponents
+} from '../../entities/chavez.js';
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -40,6 +45,13 @@ export default async function upClassroom_1(k) {
           );
           continue;
         }
+
+        if (object.name === "Chavez") {
+          entities.chavez = map.add(
+            generateChavezComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -54,6 +66,16 @@ export default async function upClassroom_1(k) {
     classroomMusic.paused = true;
     gameState.setPreviousScene("UpClassroom_1");
     k.go("firstFloor");
+  });
+
+  entities.player.onCollide("chavez", async () => {
+    classroomMusic.paused = true;
+    await startInteraction(k, entities.chavez, entities.player);
+  });
+
+  entities.player.onCollideEnd("chavez", () => {
+    classroomMusic.paused = false;
+    endInteraction(entities.chavez);
   });
 
   

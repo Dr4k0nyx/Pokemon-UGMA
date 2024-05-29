@@ -172,3 +172,28 @@ export function vicenzoGlobalStateManager() {
     },
   };
 }
+
+export function chavezGlobalStateManager() {
+  let instance = null;
+  
+  function createInstance() {
+    let nbTalkedChavez = 0;
+
+    return {
+      setNbTalkedChavez(value) {
+        nbTalkedChavez = value;
+      },
+      getNbTalkedChavez: () => nbTalkedChavez,
+    };
+  }
+
+  return {
+    getInstance() {
+      if (!instance) {
+        instance = createInstance();
+      }
+
+      return instance;
+    },
+  };
+}

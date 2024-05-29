@@ -6,9 +6,11 @@ import {
     luisGlobalStateManager,
     thaysGlobalStateManager,
     yumilvaGlobalStateManager,
-    vicenzoGlobalStateManager
+    vicenzoGlobalStateManager,
+    chavezGlobalStateManager,
 } from "./GlobalStates.js";
 
+export const chavezState = chavezGlobalStateManager().getInstance();
 export const vivelibState = vivelibGlobalStateManager().getInstance();
 export const alonsoState = alonsoGlobalStateManager().getInstance();
 export const thaysState = thaysGlobalStateManager().getInstance();
