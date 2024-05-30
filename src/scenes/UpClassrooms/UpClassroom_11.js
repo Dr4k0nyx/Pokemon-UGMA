@@ -1,4 +1,9 @@
 import {
+  endInteraction,
+  generateThaysComponents,
+  startInteraction,
+} from "../../entities/thays.js";
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -40,6 +45,13 @@ export default async function upClassroom_11(k) {
           );
           continue;
         }
+
+        if (object.name === "Thays") {
+          entities.thays = map.add(
+            generateThaysComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -54,6 +66,16 @@ export default async function upClassroom_11(k) {
     classroomMusic.paused =  true;
     gameState.setPreviousScene("UpClassroom_11");
     k.go("groundFloor");
+  });
+
+  entities.player.onCollide("thays", async () => {
+    classroomMusic.paused = true;
+    await startInteraction(k, entities.thays, entities.player);
+  });
+
+  entities.player.onCollideEnd("thays", () => {
+    classroomMusic.paused = false;
+    endInteraction(entities.thays);
   });
 
   

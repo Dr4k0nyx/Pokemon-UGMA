@@ -1,4 +1,9 @@
 import {
+  endInteraction,
+  generateYumilvaComponents,
+  startInteraction,
+} from "../../entities/yumilva.js";
+import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
@@ -40,6 +45,13 @@ export default async function upClassroom_5(k) {
           );
           continue;
         }
+
+        if (object.name === "Yumilva") {
+          entities.yumilva = map.add(
+            generateYumilvaComponents(k, k.vec2(object.x, object.y))
+          );
+          continue;
+        }
       }
 
       continue;
@@ -55,6 +67,17 @@ export default async function upClassroom_5(k) {
     gameState.setPreviousScene("UpClassroom_5");
     k.go("firstFloor");
   });
+
+  entities.player.onCollide("yumilva", async () => {
+    classroomMusic.paused = true;
+    await startInteraction(k, entities.yumilva, entities.player);
+  });
+
+  entities.player.onCollideEnd("yumilva", () => {
+    classroomMusic.paused = false;
+    endInteraction(entities.yumilva);
+  });
+
 
   
   k.camPos(entities.player.worldPos());

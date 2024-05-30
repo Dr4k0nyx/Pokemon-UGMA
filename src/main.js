@@ -33,7 +33,7 @@ localStorage.setItem('thays - battle', 0);
 localStorage.setItem('alonso - battle', 0);
 localStorage.setItem('yelenia - battle', 0);
 localStorage.setItem('luis - battle', 0);
-localStorage.setItem('yumilba - battle', 0);
+localStorage.setItem('yumilva - battle', 0);
 localStorage.setItem('vicenzo - battle', 0);
 localStorage.setItem('chavez - battle', 0);
 
@@ -73,4 +73,4 @@ for (const sceneName in scenes) {
     k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-k.go('downClassroom_6')
+k.go('universityCourtyard')

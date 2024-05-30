@@ -162,9 +162,9 @@ export function loadAssets() {
       sliceY: 4,
 
       anims: {
-        "yumilba-down": 0,
-        "yumilba-side": 4,
-        "yumilba-up": 12,
+        "yumilva-down": 0,
+        "yumilva-side": 4,
+        "yumilva-up": 12,
       }
     });
 
@@ -187,6 +187,116 @@ export function loadAssets() {
         "chavez-down": 0,
         "chavez-side": 4,
         "chavez-up": 12,
+      }
+    });
+
+    k.loadSprite("npc1", "./assets/npc1.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc1-down": 0,
+        "npc1-side": 4,
+        "npc1-up": 12,
+      }
+    });
+
+    k.loadSprite("npc2", "./assets/npc2.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc2-down": 0,
+        "npc2-side": 4,
+        "npc2-up": 12,
+      }
+    });
+
+    k.loadSprite("npc3", "./assets/npc3.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc3-down": 0,
+        "npc3-side": 4,
+        "npc3-up": 12,
+      }
+    });
+
+    k.loadSprite("npc4", "./assets/npc4.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc4-down": 0,
+        "npc4-side": 4,
+        "npc4-up": 12,
+      }
+    });
+
+    k.loadSprite("npc5", "./assets/npc5.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc5-down": 0,
+        "npc5-side": 4,
+        "npc5-up": 12,
+      }
+    });
+
+    k.loadSprite("npc6", "./assets/npc6.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc6-down": 0,
+        "npc6-side": 4,
+        "npc6-up": 12,
+      }
+    });
+
+    k.loadSprite("npc7", "./assets/npc7.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc7-down": 0,
+        "npc7-side": 4,
+        "npc7-up": 12,
+      }
+    });
+
+    k.loadSprite("npc8", "./assets/npc8.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc8-down": 0,
+        "npc8-side": 4,
+        "npc8-up": 12,
+      }
+    });
+
+    k.loadSprite("npc9", "./assets/npc9.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc9-down": 0,
+        "npc9-side": 4,
+        "npc9-up": 12,
+      }
+    });
+
+    k.loadSprite("npc10", "./assets/npc10.png", {
+      sliceX: 4,
+      sliceY: 4,
+
+      anims: {
+        "npc10-down": 0,
+        "npc10-side": 4,
+        "npc10-up": 12,
       }
     });
     
