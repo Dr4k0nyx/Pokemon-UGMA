@@ -1,4 +1,4 @@
-import { vicenzoState } from "../state/stateManagers.js";
+import { vicenzoState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import vicenzoLines from "../content/vicenzoDialogue.js";

@@ -2,7 +2,7 @@ import {
   generatePlayerComponents,
   setPlayerControls,
 } from "../../entities/player.js";
-import { gameState } from "../../state/stateManagers.js";
+import { gameState } from "../state/stateManagers.js";
 import {
   colorizeBackground,
   drawBoundries,

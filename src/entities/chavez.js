@@ -1,4 +1,4 @@
-import { chavezState } from "../state/stateManagers.js";
+import { chavezState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import chavezLines from "../content/chavezDialogue.js";

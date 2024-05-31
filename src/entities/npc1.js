@@ -1,4 +1,4 @@
-import { npc1State } from "../state/stateManagers.js";
+import { npc1State } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import npc1Lines from "../content/npc1Dialogue.js";

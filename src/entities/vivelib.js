@@ -1,4 +1,4 @@
-import { vivelibState } from "../state/stateManagers.js";
+import { vivelibState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import vivelibLines from "../content/vivelibDialogue.js";

@@ -1,4 +1,4 @@
-import { gameState } from "../state/stateManagers.js";
+import { gameState } from "../scenes/state/stateManagers.js";
 import { areAnyOfTheseKeysDown, playAnimIfNotPlaying } from "../utils.js";
 
 export function generatePlayerComponents(k, pos) {

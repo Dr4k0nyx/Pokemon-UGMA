@@ -1,4 +1,4 @@
-import { yeleniaState } from "../state/stateManagers.js";
+import { yeleniaState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import yeleniaLines from "../content/yeleniaDialogue.js";

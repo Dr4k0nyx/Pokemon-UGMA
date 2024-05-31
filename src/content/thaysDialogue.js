@@ -1,8 +1,8 @@
 const spanish = [
     [
-      "Mucho gusto, Mi nombre es vicenzo",
-      "Soy la maestra de Programación III",
-      "Me gustaria saber que haz aprendido\n\nde programación, voy hacerte una prueba rapida",
+      "Mucho gusto, Mi nombre es Thays parra",
+      "Soy la maestra de Programación II",
+      "Me gustaria saber que haz aprendido,\n\nvoy hacerte una prueba rapida",
       "Si no cumples con lo necesario\n\nusted no pa' el baile"
     ],
     [

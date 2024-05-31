@@ -1,4 +1,4 @@
-import { gameState } from "../state/stateManagers.js";
+import { gameState } from "../scenes/state/stateManagers.js";
 
 async function displayLine(textContainer, line) {
   for (const char of line) {

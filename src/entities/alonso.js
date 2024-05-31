@@ -1,4 +1,4 @@
-import { alonsoState } from "../state/stateManagers.js";
+import { alonsoState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import alonsoLines from "../content/alonsoDialogue.js";

@@ -73,4 +73,4 @@ for (const sceneName in scenes) {
     k.scene(sceneName, (args) => scenes[sceneName](k, args));
 }
 
-k.go('universityCourtyard')
+k.go('setTitle')

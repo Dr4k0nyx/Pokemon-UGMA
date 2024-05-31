@@ -1,4 +1,4 @@
-import { yumilvaState } from "../state/stateManagers.js";
+import { yumilvaState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import yumilvaLines from "../content/yumilvaDialogue.js";

@@ -1,4 +1,4 @@
-import { luisState } from "../state/stateManagers.js";
+import { luisState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import luisLines from "../content/luisDialogue.js";

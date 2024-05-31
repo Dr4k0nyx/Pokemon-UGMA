@@ -1,4 +1,4 @@
-import { thaysState } from "../state/stateManagers.js";
+import { thaysState } from "../scenes/state/stateManagers.js";
 import { dialog } from "../uiComponents/dialog.js";
 import { playAnimIfNotPlaying } from "../utils.js";
 import thaysLines from "../content/alonsoDialogue.js";
